@@ -1,0 +1,8 @@
+temp/**
+/logs/* 
+/vendor/
+node_modules/
+/log
+www/img
+style.html
+www/js/mdb.es.min.js
