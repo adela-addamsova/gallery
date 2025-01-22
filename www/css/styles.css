@@ -5,7 +5,7 @@
 */
 
 :root {
-  --site-color-01: rgb(77, 167, 88);
+  --site-color-01: #64a19d;
   --site-color-02: rgb(222, 135, 72);
 }
 
@@ -67,10 +67,10 @@
 
 .masthead h1,
 .masthead .h1 {
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: 4rem;
+  /* line-height: 2rem; */
   letter-spacing: 0.2rem;
-  background: linear-gradient(rgba(145, 145, 145, 0.9), rgb(255, 255, 255));
+  background: linear-gradient( rgb(255, 255, 255), rgba(145, 145, 145, 0.9));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -81,6 +81,7 @@
 .masthead .h2 {
   max-width: 20rem;
   font-size: 1rem;
+  text-underline-offset: 5px;
 }
 
 @media (min-width: 768px) {
@@ -193,7 +194,192 @@
 }
 
 @media (max-width: 1024px) {
-  .footer-section {
+  .footer-section, .gallery-page {
     padding: 5rem 0;
   }
+}
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99999;
+}
+
+#preloader:before,
+#preloader:after {
+  content: "";
+  background-color: #000000;
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  height: 100%;
+  transition: all 0.3s ease 0s;
+  z-index: -1;
+}
+
+#preloader:after {
+  left: auto;
+  right: 0;
+}
+
+#preloader .line {
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  width: 1px;
+  height: 280px;
+  transition: all 0.8s ease 0s;
+}
+
+#preloader .line:before {
+  content: "";
+  position: absolute;
+  background-color: #ffffff;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 0%;
+  transform: translateY(-50%);
+  animation: lineincrease 1000ms ease-in-out 0s forwards;
+}
+
+#preloader .line:after {
+  content: "";
+  position: absolute;
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateY(-100%);
+  animation: linemove 1200ms linear 0s infinite;
+  animation-delay: 2000ms;
+}
+
+#preloader.loaded .line {
+  opacity: 0;
+  height: 100% !important;
+}
+
+#preloader.loaded .line:after {
+  opacity: 0;
+}
+
+#preloader.loaded:before,
+#preloader.loaded:after {
+  animation: preloaderfinish 300ms ease-in-out 500ms forwards;
+}
+
+@keyframes lineincrease {
+  0% {
+    height: 0%;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes linemove {
+  0% {
+    transform: translateY(200%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes preloaderfinish {
+  0% {
+    width: 5 0%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+.gallery-page {
+  padding: 8rem 0;
+  width: 100%;
+  margin: auto;
+}
+
+.gallery-page-head {
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/home-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover; */
+}
+
+.gallery-page .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.gallery-page .gallery-item img {
+  transition: 0.3s;
+}
+
+.gallery-page .gallery-links {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: all ease-in-out 0.3s;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.gallery-page .gallery-links .preview-link,
+.gallery-page .gallery-links .details-link {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+  line-height: 1.2;
+  margin: 30px 8px 0 8px;
+}
+
+.gallery-page .gallery-links .preview-link:hover,
+.gallery-page .gallery-links .details-link:hover {
+  color: #ffffff;
+}
+
+.gallery-page .gallery-links .details-link {
+  font-size: 30px;
+  line-height: 0;
+}
+
+.gallery-page .gallery-item:hover .gallery-links {
+  opacity: 1;
+}
+
+.gallery-page .gallery-item:hover .preview-link,
+.gallery-page .gallery-item:hover .details-link {
+  margin-top: 0;
+}
+
+.gallery-page .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.glightbox-clean .gslide-description {
+  background: #272727;
+}
+
+.glightbox-clean .gslide-title {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }

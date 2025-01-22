@@ -56,3 +56,32 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+ /**
+   * Preloader
+   */
+ const preloader = document.querySelector('#preloader');
+ if (preloader) {
+   window.addEventListener('load', () => {
+     setTimeout(() => {
+       preloader.classList.add('loaded');
+     }, 500);
+     setTimeout(() => {
+       preloader.remove();
+     }, 1500);
+   });
+ }
+
+
+// Wait for the page to be fully loaded
+// window.addEventListener('load', function() {
+//     // Hide preloader
+//     const preloader = document.getElementById('preloader');
+//     const content = document.getElementById('content');
+
+//     // After the page is loaded, hide the preloader and show the content
+//     preloader.style.display = 'none';
+//     content.style.display = 'block';
+// });
+
+
+
