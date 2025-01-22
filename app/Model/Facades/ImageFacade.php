@@ -39,15 +39,27 @@ class ImageFacade
         return $this->database->query($query, $category_id)->fetch();
     }
 
-    public function getImagesByCategory(string $category_name)
+    public function getImagesByCategory(string $category_name, int $limit, int $offset)
     {
         $query = "SELECT 
         images.id AS image_id, images.thumb_path AS image_thumb, images.uploaded_at AS image_uploaded_at, categories.name AS category_name, images.description AS description, images.path AS image_path, categories.background_path as background
         FROM images 
                   LEFT JOIN categories ON categories.id = images.category_id 
                   WHERE categories.name = ? 
-                  ORDER BY uploaded_at DESC";
+                  ORDER BY uploaded_at DESC
+                  LIMIT ? OFFSET ?";
 
-        return $this->database->query($query, $category_name)->fetchAll();
+        return $this->database->query($query, $category_name, $limit, $offset)->fetchAll();
     }
+
+    public function countImagesByCategory(string $category_name): int
+{
+    $query = "SELECT COUNT(*) AS total 
+              FROM images 
+              LEFT JOIN categories ON categories.id = images.category_id 
+              WHERE categories.name = ?";
+
+    return $this->database->query($query, $category_name)->fetchField();
+}
+
 }
