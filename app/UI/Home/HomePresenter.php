@@ -10,13 +10,8 @@ use Nette;
 
 final class HomePresenter extends Nette\Application\UI\Presenter
 {
-    private ImageFacade $imageFacade;
-    public function __construct(ImageFacade $imageFacade)
-    {
-        parent::__construct();
-        $this->imageFacade = $imageFacade;
-    }
-
+    /** @var ImageFacade @inject */
+    public $imageFacade;
     public function renderDefault(): void
 {
     // Fetch categories from the 'categories' table

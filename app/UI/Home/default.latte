@@ -1,3 +1,5 @@
+{block title}Photo by Jackie{/block}
+
 {block content}
 
 <!-- Masthead-->
@@ -10,7 +12,7 @@
         <h1 class="mx-auto my-0 text-uppercase main-h1">Photo by Jackie</h1>
         <h2
           class="text-white-50 mx-auto mt-2 mb-5"
-          style="text-decoration: underline #64a19d; line-height: 3rem"
+          style="text-decoration: underline var(--site-color-01); line-height: 3rem"
         >
           Welcome to the first oficial webpage where I present my photography
           collection
@@ -26,9 +28,11 @@
     {foreach $categories as $category}
     <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
       <div class="col-lg-6">
-        <img class="img-fluid" src="{$category->background_path}" alt="..." />
+        <img class="img-fluid" src="{$basePath}{$category->background_path}" alt="..." />
       </div>
-      <div class="col-lg-6{if $category->id % 2 == 1} order-lg-first{/if}">
+      
+      <div class="col-lg-6{if $iterator->even} order-lg-first{/if}">
+      <a n:href="Gallery:{$category->name}" style="text-decoration: none;">
         <div class="bg-black text-center h-100 gallery">
           <div class="d-flex h-100">
             <div class="gallery-text w-100 my-auto text-center text-lg-right">
@@ -36,7 +40,9 @@
             </div>
           </div>
         </div>
+        </a>
       </div>
+      
     </div>
     {/foreach}
   </div>
@@ -70,7 +76,7 @@
 
             <div class="carousel-item{if $iterator->isFirst()} active{/if}">
               <img
-                src="{$image->image_thumb}"
+                src="{$basePath}{$image->image_thumb}"
                 class="d-block w-100"
                 alt="..."
               />
