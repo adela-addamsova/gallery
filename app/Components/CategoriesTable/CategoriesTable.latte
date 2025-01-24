@@ -1,0 +1,30 @@
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th>Preview</th>
+    {foreach $columns as $key => $column}
+        <th>{$column}</th>
+      {/foreach}
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {foreach $categories as $category}
+  <tr>
+    <td><img src="{$basePath}/{$category->background_path}" style="width: 5rem;"></td>
+    {foreach $columns as $key => $header}
+        
+      <td>{$category->$key}</td>
+    {/foreach}
+    <td><i class="fa-regular fa-pen-to-square" style="width: 3rem;color: var(--site-color-01);"></i></td>
+    <td><i class="fa-solid fa-trash-can" style="width: 3rem;color: var(--site-color-02);"></i></td>
+  </tr>
+{/foreach}
+
+  </tbody>
+</table>
+
+</div>
+
