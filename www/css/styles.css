@@ -9,6 +9,17 @@
   --site-color-02: rgb(222, 135, 72);
 }
 
+@media (max-width: 768px) {
+
+  #mainNav {
+    background-color: white;
+  }
+
+  .gallery-container {
+    padding-top: 7rem;
+  }
+}
+
 #mainNav .nav-link {
   transition: none;
   padding: 2rem 1.5rem;
@@ -65,6 +76,33 @@
   background-size: cover;
 }
 
+.about {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/yo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+
+  .about {
+    background: black;
+    height: 30vh;
+    min-height: 0;
+    padding: 7rem 0 0 0;
+  }
+
+  #mainNav .nav-link {
+    color: black;
+  }
+}
+
 .masthead h1,
 .masthead .h1 {
   font-size: 4rem;
@@ -92,6 +130,7 @@
     line-height: 4rem;
   }
 }
+
 
 @media (min-width: 992px) {
   .masthead {
@@ -194,8 +233,12 @@
 }
 
 @media (max-width: 1024px) {
-  .footer-section, .gallery-page {
+  .footer-section, .gallery-page, .gallery-section {
     padding: 5rem 0;
+  }
+
+  .slider-section {
+    padding-bottom: 5rem;
   }
 }
 
@@ -376,42 +419,39 @@
   margin: 0;
 }
 
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+
 /* Make the page numbers circular and center the text */
 .pagination .page-item .circle-link {
-  border-radius: 50%;    /* Makes the link circular */
-  width: 40px;           /* Set width to create a circle */
-  height: 40px;          /* Set height to make it round */
-  display: flex;         /* Use flexbox for centering */
-  align-items: center;   /* Vertically center the text */
-  justify-content: center; /* Horizontally center the text */
-  font-size: 16px;       /* Font size (optional) */
-  padding: 0;            /* Remove padding to ensure the circle stays even */
-  text-align: center;    /* Ensure text is centered */
+  border-radius: 50%;  
+  width: 40px;        
+  height: 40px;      
+  display: flex;       
+  align-items: center;   
+  justify-content: center;
+  font-size: 16px;  
+  padding: 0;    
+  text-align: center;   
 }
 
 /* Make the arrows inherit background and have no border */
 .pagination .page-item .page-link {
-  background-color: inherit;  /* Inherit background color */
-  border: none;               /* Remove border */
-  color: inherit;             /* Inherit text color */
-  display: flex;              /* Use flexbox to center arrows */
-  align-items: center;        /* Vertically center the arrows */
-  justify-content: center;    /* Horizontally center the arrows */
-  width: 40px;                /* Same width as page numbers */
-  height: 40px;               /* Same height as page numbers */
-  border-radius: 50%;         /* Makes the arrow background circular */
-  font-size: 18px;            /* Adjust arrow size */
-  padding: 0;                 /* No extra padding */
+  background-color: inherit; 
+  border: none;              
+  color: inherit;            
+  display: flex;             
+  align-items: center;       
+  justify-content: center;   
+  width: 40px;               
+  height: 40px;             
+  border-radius: 50%;      
+  font-size: 18px;         
+  padding: 0;                
 }
 
-/* Hover effect for page links */
-.pagination .page-item .circle-link:hover {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff; /* Optional: add a border color */
-}
-
-/* Active page style (green circle) */
+/* Active page style (circle) */
 .pagination .page-item.active .circle-link {
   background-color:   var(--site-color-02);
   color: white;
@@ -421,15 +461,15 @@
 .pagination .page-item.disabled .page-link {
   color: #6c757d;
   pointer-events: none;
-  background-color: transparent; /* Remove background for disabled state */
-  border-color: transparent; /* Remove border color */
+  background-color: transparent;
+  border-color: transparent; 
 }
 
 /* Disabled state for arrows (no background and no border) */
 .pagination .page-item.disabled .page-link span {
-  background-color: transparent; /* No background */
-  color: #6c757d;  /* Gray color for the arrow */
-  border: none;     /* No border */
+  background-color: transparent; 
+  color: #6c757d; 
+  border: none;    
 }
 
 /* Hover effect for arrows */
@@ -442,14 +482,14 @@
 .pagination .page-item .page-link span {
   display: inline-block;
   font-size: 18px;
-  background-color: inherit;  /* Inherit background color */
-  color: inherit;             /* Inherit text color */
-  border-radius: 50%;         /* Make arrows circular */
-  width: 40px;                /* Same size as page number */
-  height: 40px;               /* Same size as page number */
-  display: flex;              /* Flex to center the arrow icon */
-  align-items: center;        /* Vertically center the icon */
-  justify-content: center;    /* Horizontally center the icon */
+  background-color: inherit;  
+  color: inherit;            
+  border-radius: 50%;        
+  width: 40px;                
+  height: 40px;              
+  display: flex;             
+  align-items: center;       
+  justify-content: center;  
 }
 
 /* Spacing between the page items */
@@ -457,3 +497,7 @@
   margin-right: 5px;
 }
 
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
