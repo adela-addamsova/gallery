@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Home;
+namespace App\UI\Front\Home;
 
 use App\Model\Facades\ImageFacade;
 use Nette;
-
 
 final class HomePresenter extends Nette\Application\UI\Presenter
 {

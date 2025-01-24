@@ -2,6 +2,11 @@
 
 {block content}
 
+<!-- Preloader -->
+      {* <div id="preloader">
+        <div class="line"></div>
+      </div> *}
+
 <!-- Masthead-->
 <header class="masthead">
   <div
@@ -24,15 +29,17 @@
 
 <!-- Gallery -->
 <section class="gallery-section bg-light" id="gallery">
+{* <div class="container" data-aos="fade-up" data-aos-delay="100"> *}
   <div class="container px-4 px-lg-5">
     {foreach $categories as $category}
+    <div class="container" data-aos="fade-up" data-aos-delay="50">
     <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
       <div class="col-lg-6">
-        <img class="img-fluid" src="{$basePath}{$category->background_path}" alt="..." />
+        <img class="img-fluid lazyload" src="{$basePath}{$category->background_path}" alt="..." />
       </div>
       
       <div class="col-lg-6{if $iterator->even} order-lg-first{/if}">
-      <a n:href="Gallery:{$category->name}" style="text-decoration: none;">
+      <a href="{$basePath}/gallery/{$category->name}" style="text-decoration: none;">
         <div class="bg-black text-center h-100 gallery">
           <div class="d-flex h-100">
             <div class="gallery-text w-100 my-auto text-center text-lg-right">
@@ -42,10 +49,11 @@
         </div>
         </a>
       </div>
-      
+       </div>
     </div>
     {/foreach}
   </div>
+  {* </div> *}
 </section>
 
 <!-- Latest images slider -->

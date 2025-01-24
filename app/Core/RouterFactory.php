@@ -7,14 +7,22 @@ namespace App\Core;
 use Nette;
 use Nette\Application\Routers\RouteList;
 
-
 final class RouterFactory
 {
 	use Nette\StaticClass;
 
-	public static function createRouter(): RouteList { $router = new RouteList; // Add a route for the gallery with a category parameter 
-		$router->addRoute('gallery/<category>[/<page=1>]', 'Gallery:default');
+	public static function createRouter(): RouteList
+	{
+		$router = new RouteList;
 
-		$router->addRoute('<presenter>/<action>[/<id>]', 'Home:default'); return $router;
+		// Front
+		$router->addRoute('about', 'Front:Home:about');
+		$router->addRoute('gallery/<category>[/<page=1>]', 'Front:Gallery:default');
+		$router->addRoute('<presenter>/<action>[/<id>]', 'Front:Home:default');
+
+		// Admin
+		$router->addRoute('admin/<presenter>/<action>[/<id=null>]', 'Admin:Admin:default');
+
+		return $router;
 	}
 }

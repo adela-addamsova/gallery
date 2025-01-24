@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Gallery;
+namespace App\UI\Front\Gallery;
 
 use App\Model\Facades\ImageFacade;
 use Nette;
