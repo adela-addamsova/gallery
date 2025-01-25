@@ -17,11 +17,11 @@ final class RouterFactory
 
 		// Front
 		$router->addRoute('about', 'Front:Home:about');
-		$router->addRoute('gallery/<category>[/<page=1>]', 'Front:Gallery:default');
-		$router->addRoute('<presenter>/<action>[/<id>]', 'Front:Home:default');
+		$router->addRoute('gallery/<category>', 'Front:Gallery:default');
+		$router->addRoute('<presenter>/<action>', 'Front:Home:default');
 
 		// Admin
-		$router->addRoute('admin/<presenter>/<action>[/<id=null>]', 'Admin:Admin:default');
+		// $router->addRoute('admin/<presenter>/<action>[/<page=1>]', 'Admin:Admin:default');
 
 		return $router;
 	}

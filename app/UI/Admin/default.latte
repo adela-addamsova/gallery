@@ -13,12 +13,77 @@
 
   <h1>Categories</h1>
   {control categoriesTable}
+  
 
 </div>
- <div class="row gy-4 justify-content-center">
-<h1>Images</h1>
+ {* <div class="row gy-4 justify-content-center">
+<h1>Images</h1> 
   {control imagesTable}
+
+
+</div> *}
+
+<div class="table-responsive">
+<h1>Images</h1> 
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th>Preview</th>
+    {foreach $columns as $key => $column}
+        <th>{$column}</th>
+      {/foreach}
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {foreach $images as $image}
+  <tr>
+    <td><img src="{$basePath}/{$image->thumb_path}" style="width: 5rem;"></td>
+    {foreach $columns as $key => $header}
+        
+      <td>{$image->$key}</td>
+    {/foreach}
+    <td><i class="fa-regular fa-pen-to-square" style="width: 3rem;color: var(--site-color-01);"></i></td>
+    <td><i class="fa-solid fa-trash-can" style="width: 3rem;color: var(--site-color-02);"></i></td>
+  </tr>
+{/foreach}
+
+  </tbody>
+</table>
 </div>
+
+<!-- Paginator -->
+      <div class="container mt-5" style="align-items: center;
+    justify-content: center;
+    display: flex
+;">
+  <nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <!-- Previous Page (no circle) -->
+    <li class="page-item{if $paginator->isFirst()} disabled{/if}">
+      <a class="page-link" n:href="this, 1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    <!-- Page Numbers (circle) -->
+    {for $i = 1; $i <= $paginator->pageCount; $i++}
+      <li class="page-item {if $i == $paginator->page}active{/if}">
+        <a class="page-link circle-link" n:href="this, $i">{$i}</a>
+      </li>
+    {/for}
+
+    <!-- Next Page (no circle) -->
+    <li class="page-item{if $paginator->isLast()} disabled{/if}">
+      <a class="page-link" n:href="this, $paginator->page+1" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+    </div>
+
 </div>
 </section>
 

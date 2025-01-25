@@ -6,6 +6,7 @@ namespace App\Model\Facades;
 
 use Exception;
 use Nette\Database\Explorer;
+use Nette\Database\ResultSet;
 use Nette\Database\Table\Selection;
 
 class AdminFacade
@@ -18,9 +19,27 @@ class AdminFacade
 
 
     // Images
-    public function showImages(): Selection
+    // public function showImages(int $itemsPerPage = 10, int $offset = 0)
+    // {
+    //     $query = $this->database->table('images');  // Adjust for your table name
+        
+    //     // Apply pagination if parameters are provided
+    //     return $query->limit($itemsPerPage, $offset);
+    // }
+
+    public function showImages(int $limit, int $offset): ResultSet
+{
+    return $this->database->query('
+			SELECT * FROM images
+			ORDER BY uploaded_at DESC
+			LIMIT ?
+			OFFSET ?',
+			$limit, $offset,
+		);
+}
+    public function getTotalImagesCount(): int
     {
-        return $this->database->table('images');
+        return $this->database->fetchField('SELECT COUNT(*) FROM images');
     }
 
     public function insertImage($data)

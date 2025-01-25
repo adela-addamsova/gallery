@@ -2,6 +2,7 @@ services:
 	- App\Core\RouterFactory::createRouter
 	- App\Components\ImagesTable\ImagesTable
 	- App\Components\CategoriesTable\CategoriesTable
+	- App\Components\Paginator\MyPaginator
 
 search:
 	-	in: %appDir%
