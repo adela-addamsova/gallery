@@ -57,7 +57,13 @@ class MyPaginator extends Control
        $this->template->baseLink = $this->baseLink;
        $this->template->setFile(__DIR__ . '/myPaginator.latte');
        $this->template->render();
+
+    
+        $this->redrawControl('content');
+    
    }
+
+   
 
 //    public function getPaginator(): Paginator
 //    {

@@ -6,7 +6,7 @@
   <ul class="pagination justify-content-center">
     <!-- Previous Page (no circle) -->
     <li class="page-item{if $paginator->isFirst()} disabled{/if}">
-      <a class="page-link" href="{$baseLink}{$paginator->page - 1}" aria-label="Previous">
+      <a class="page-link ajax" href="{$baseLink}{$paginator->page - 1}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -14,13 +14,13 @@
     <!-- Page Numbers (circle) -->
     {for $i = 1; $i <= $paginator->pageCount; $i++}
       <li class="page-item {if $i == $paginator->page}active{/if}">
-        <a class="page-link circle-link" href="{$baseLink}{$i}">{$i}</a>
+        <a class="page-link circle-link ajax" href="{$baseLink}{$i}">{$i}</a>
       </li>
     {/for}
 
     <!-- Next Page (no circle) -->
     <li class="page-item{if $paginator->isLast()} disabled{/if}">
-      <a class="page-link" href="{$baseLink}{$paginator->page + 1}" aria-label="Next">
+      <a class="page-link ajax" href="{$baseLink}{$paginator->page + 1}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

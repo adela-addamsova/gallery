@@ -15,13 +15,10 @@ final class RouterFactory
 	{
 		$router = new RouteList;
 
-		// Front
 		$router->addRoute('about', 'Front:Home:about');
-		$router->addRoute('gallery/<category>', 'Front:Gallery:default');
+		$router->addRoute('gallery/<category>/<page=1>', 'Front:Gallery:default');
+		$router->addRoute('admin/<page \d+>', 'Admin:default');
 		$router->addRoute('<presenter>/<action>', 'Front:Home:default');
-
-		// Admin
-		// $router->addRoute('admin/<presenter>/<action>[/<page=1>]', 'Admin:Admin:default');
 
 		return $router;
 	}

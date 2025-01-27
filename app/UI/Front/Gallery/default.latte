@@ -10,15 +10,17 @@
     </div>
   </div>
 </header>
-
-<section id="gallery" class="gallery-page section bg-light">
+  {snippet content}
+<section id="gallery" class="gallery-page section bg-light ajax">
   <div
     class="container-fluid"
     data-aos="fade-up"
     data-aos-delay="100"
     style="width: 95%"
   >
-    <div class="row gy-4 justify-content-center">
+
+    <div class="row gy-4 justify-content-center ajax">
+    
       {foreach $images as $image}
       <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
         <div class="gallery-item h-100">
@@ -33,7 +35,7 @@
             <a
               href="{$basePath}{$image->image_path}"
               title="{$image->description}"
-              class="glightbox preview-link"
+              class="glightbox preview-link ajax"
               ><i class="bi bi-arrows-angle-expand"></i
             ></a>
           </div>
@@ -41,43 +43,17 @@
       </div>
       <!-- End Gallery Item -->
       {/foreach}
+      
 
-      {control myPaginator}
+        {control myPaginator}
 
-     <!-- Paginator -->
-      {* <div class="container mt-5" style="align-items: center;
-    justify-content: center;
-    display: flex
-;">
-  <nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
-    <!-- Previous Page (no circle) -->
-    <li class="page-item{if $paginator->isFirst()} disabled{/if}">
-      <a class="page-link" n:href="this, $category, 1" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-
-    <!-- Page Numbers (circle) -->
-    {for $i = 1; $i <= $paginator->pageCount; $i++}
-      <li class="page-item {if $i == $paginator->page}active{/if}">
-        <a class="page-link circle-link" n:href="this, $category, $i">{$i}</a>
-      </li>
-    {/for}
-
-    <!-- Next Page (no circle) -->
-    <li class="page-item{if $paginator->isLast()} disabled{/if}">
-      <a class="page-link" n:href="this, $category, $paginator->page+1" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-    </div> *}
+    
     
     </div>
+
   </div>
 </section>
+    {/snippet}
 <!-- /Gallery Section -->
 
 <script src="{$basePath}/js/glightbox.min.js"></script>

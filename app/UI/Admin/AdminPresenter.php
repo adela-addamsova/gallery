@@ -25,11 +25,16 @@ class AdminPresenter extends Presenter {
     /** @var AdminFacade @inject */
     public $adminFacade;
 
+    protected function createComponentMyPaginator(): MyPaginator
+    {
+        return new MyPaginator();
+    }
 
     // protected function createComponentImagesTable(): ImagesTable
     // {
     //     return new ImagesTable($this->adminFacade);
     // }
+
     protected function createComponentCategoriesTable(): CategoriesTableCategoriesTable
     {
         return $this->categoriesTable;
@@ -48,22 +53,22 @@ class AdminPresenter extends Presenter {
 
         $imageCount = $this->adminFacade->getTotalImagesCount();
 
-   
-        $paginator = new Paginator;
-        $paginator->setItemCount($imageCount); // total items count
-        $paginator->setItemsPerPage(10); // items per page
-        $paginator->setPage($page); // actual page number
+        $this['myPaginator']->setTotalItems($imageCount);
+		$this['myPaginator']->setPage( $page);
+		$this['myPaginator']->setItemsPerPage(10);
+		$this['myPaginator']->setBaseLink($this->link('Admin:default', ['page' => 1]));
 
-       
-        $images = $this->adminFacade->showImages($paginator->getLength(), $paginator->getOffset());
+        $offset = $this['myPaginator']->getOffset();
+        $length = $this['myPaginator']->getLimit();
+
+        $images = $this->adminFacade->showImages($length, $offset);
 
     
         $this->template->images = $images;
-        $this->template->paginator = $paginator;
         $this->template->columns = $columns;
-  
+        $this->template->page = $page;
 
-    
+        $this->redrawControl('content');
     }
 
 }

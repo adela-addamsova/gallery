@@ -15,31 +15,29 @@ final class GalleryPresenter extends Presenter
     /** @var ImageFacade @inject */
     public $imageFacade;
 
-	 protected function createComponentMyPaginator(): MyPaginator
+    protected function createComponentMyPaginator(): MyPaginator
     {
         return new MyPaginator();
     }
 
     public function renderDefault(int $page = 1, string $category = 'default'): void
     {
-        $itemsCount = $this->imageFacade->countImagesByCategory($category); 
+        $itemsCount = $this->imageFacade->countImagesByCategory($category);
 
-		$this['myPaginator']->setTotalItems($itemsCount);
-		$this['myPaginator']->setPage( $page);
-		$this['myPaginator']->setItemsPerPage(9);
-		$this['myPaginator']->setBaseLink($this->link('this', ['page' => 1]));
+        $this['myPaginator']->setTotalItems($itemsCount);
+        $this['myPaginator']->setPage($page);
+        $this['myPaginator']->setItemsPerPage(9);
+        $this['myPaginator']->setBaseLink($this->link('this', ['page' => 1]));
 
         $offset = $this['myPaginator']->getOffset();
         $length = $this['myPaginator']->getLimit();
-        $items = $this->imageFacade->getImagesByCategory($category,$length, $offset);
+        $items = $this->imageFacade->getImagesByCategory($category, $length, $offset);
 
-        // Pass data to the template
         $this->template->images = $items;
         $this->template->itemsCount = $itemsCount;
         $this->template->page = $page;
         $this->template->category = $category;
 
-		
-
+        $this->redrawControl('content');
     }
 }
