@@ -4,37 +4,42 @@ declare(strict_types=1);
 
 namespace App\UI\Front\Gallery;
 
+use App\Components\Paginator\MyPaginator;
 use App\Model\Facades\ImageFacade;
 use Nette;
+use Nette\Application\LinkGenerator;
+use Nette\Application\UI\Presenter;
 
-
-final class GalleryPresenter extends Nette\Application\UI\Presenter
+final class GalleryPresenter extends Presenter
 {
     /** @var ImageFacade @inject */
     public $imageFacade;
 
-    public function renderDefault(string $category, int $page = 1): void
+	 protected function createComponentMyPaginator(): MyPaginator
     {
-        // Fetch images from the selected category
-        // $images = $this->imageFacade->getImagesByCategory($category);
-        // $this->template->images = $images;
+        return new MyPaginator();
+    }
+
+    public function renderDefault(int $page = 1, string $category = 'default'): void
+    {
+        $itemsCount = $this->imageFacade->countImagesByCategory($category); 
+
+		$this['myPaginator']->setTotalItems($itemsCount);
+		$this['myPaginator']->setPage( $page);
+		$this['myPaginator']->setItemsPerPage(9);
+		$this['myPaginator']->setBaseLink($this->link('this', ['page' => 1]));
+
+        $offset = $this['myPaginator']->getOffset();
+        $length = $this['myPaginator']->getLimit();
+        $items = $this->imageFacade->getImagesByCategory($category,$length, $offset);
+
+        // Pass data to the template
+        $this->template->images = $items;
+        $this->template->itemsCount = $itemsCount;
+        $this->template->page = $page;
         $this->template->category = $category;
 
-        // We'll find the total number of published articles
-		$imageCount = $this->imageFacade->countImagesByCategory($category);
+		
 
-		// We'll make the Paginator instance and set it up
-		$paginator = new Nette\Utils\Paginator;
-		$paginator->setItemCount($imageCount); // total articles count
-		$paginator->setItemsPerPage(9); // items per page
-		$paginator->setPage($page); // actual page number
-
-		// We'll find a limited set of articles from the database based on Paginator's calculations
-		$images = $this->imageFacade->getImagesByCategory($category, $paginator->getLength(), $paginator->getOffset());
-
-		// which we pass to the template
-		$this->template->images = $images;
-		// and also Paginator itself to display paging options
-		$this->template->paginator = $paginator;
     }
 }
