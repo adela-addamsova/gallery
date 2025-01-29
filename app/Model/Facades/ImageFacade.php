@@ -32,7 +32,7 @@ class ImageFacade
         images.id AS image_id, images.thumb_path AS image_thumb, images.uploaded_at AS image_uploaded_at, categories.name AS category_name
         FROM images 
                   LEFT JOIN categories ON categories.id = images.category_id 
-                  WHERE category_id = ? 
+                  WHERE category_id = ? AND images.deleted_at is NULL
                   ORDER BY uploaded_at DESC 
                   LIMIT 1";
 
@@ -45,7 +45,7 @@ class ImageFacade
         images.id AS image_id, images.thumb_path AS image_thumb, images.uploaded_at AS image_uploaded_at, categories.name AS category_name, images.description AS description, images.path AS image_path, categories.background_path as background
         FROM images 
                   LEFT JOIN categories ON categories.id = images.category_id 
-                  WHERE categories.name = ? 
+                  WHERE images.deleted_at is NULL AND categories.name = ?
                   ORDER BY uploaded_at DESC
                   LIMIT ? OFFSET ?";
 
@@ -57,7 +57,7 @@ class ImageFacade
     $query = "SELECT COUNT(*) AS total 
               FROM images 
               LEFT JOIN categories ON categories.id = images.category_id 
-              WHERE categories.name = ?";
+              WHERE categories.name = ? AND images.deleted_at is NULL";
 
     return $this->database->query($query, $category_name)->fetchField();
 }

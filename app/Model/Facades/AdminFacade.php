@@ -31,15 +31,24 @@ class AdminFacade
 {
     return $this->database->query('
 			SELECT * FROM images
+            WHERE deleted_at is NULL
 			ORDER BY uploaded_at DESC
 			LIMIT ?
 			OFFSET ?',
 			$limit, $offset,
 		);
 }
+
+public function getImage($id) {
+    return $this->database->query('
+            SELECT *
+            FROM images
+            WHERE id = ?', $id
+        )->fetch();
+}
     public function getTotalImagesCount(): int
     {
-        return $this->database->fetchField('SELECT COUNT(*) FROM images');
+        return $this->database->fetchField('SELECT COUNT(*) FROM images WHERE deleted_at is NULL');
     }
 
     public function insertImage($data)
@@ -51,9 +60,9 @@ class AdminFacade
         }
     }
 
-    public function updateImage($data) {
+    public function updateImage($data, $id) {
         try {
-            $this->database->table('images')->update($data);
+            $this->database->table('images')->where('id', $id)->update($data);
         } catch (Exception $e) {
             throw new Exception('An error occurred: ' . $e->getMessage());
         }
