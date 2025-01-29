@@ -15,10 +15,19 @@ final class RouterFactory
 	{
 		$router = new RouteList;
 
-		$router->addRoute('about', 'Front:Home:about');
-		$router->addRoute('gallery/<category>/<page=1>', 'Front:Gallery:default');
-		$router->addRoute('admin/<page \d+>', 'Admin:default');
-		$router->addRoute('<presenter>/<action>', 'Front:Home:default');
+		$router->addRoute('admin/deleteImage/<id>', 'Admin:Admin:deleteImage');
+
+		$router->addRoute('admin/editPhoto/<id>', 'Admin:EditPhoto:default');
+
+
+		$router->addRoute('gallery/<category>/<page>', ['module' => 'Front', 'presenter' => 'Gallery', 'action' => 'default', 'category' => 'default', 'page' => 1]);
+
+		$router->addRoute('admin/<page \d+>', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default']);
+
+
+		$router->addRoute('admin/<presenter>/<action>[</id>]', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default', 'id' => null]);
+		
+		$router->addRoute('<presenter>/<action>', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'default']);
 
 		return $router;
 	}
