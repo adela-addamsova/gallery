@@ -10,27 +10,42 @@ use Nette\Application\UI\Form;
 
 class PhotoForm extends Control
 {
+    // Event callback triggered when the form is saved
     public array $onSave = [];
+
+    // Edit mode flag to determine if we are editing an existing image or creating a new one
     private bool $isEditMode;
+
+    // Holds image data for editing when in edit mode
     private $imageData = null;
 
-    public function __construct(
-        private AdminFacade $adminFacade,
-    ) {}
+    /** @var AdminFacade @inject */
+    public $adminFacade;
 
-    public function setEditMode(bool $isEditMode,  $imageData = null): void
+    /**
+     * Sets the edit mode and optionally provides image data for editing
+     * 
+     * @param bool $isEditMode - Indicates if edit mode is set
+     * @param mixed $imageData - Image data to be used for editing
+     */
+    public function setEditMode(bool $isEditMode, $imageData = null): void
     {
         $this->isEditMode = $isEditMode;
         $this->imageData = $imageData;
     }
 
+    /**
+     * Creates the form component for photo data
+     * 
+     * @return Form - The generated form component
+     */
     protected function createComponentForm(): Form
     {
         $form = new Form;
 
         $form->addText('description', 'Description')
             ->setHtmlAttribute('placeholder', 'Description');
-        $form->addText('category_id',  'Category ID')
+        $form->addText('category_id', 'Category ID')
             ->setHtmlAttribute('placeholder', 'Category_ID')
             ->setRequired();
         $form->addText('path', 'Full image path')
@@ -56,14 +71,22 @@ class PhotoForm extends Control
         return $form;
     }
 
-    public function processForm(Form $form, array $values): void
+    /**
+     * Handles the form submission when it is successfully processed
+     * 
+     * @param array $values - The submitted form data
+     */
+    public function processForm(array $values): void
     {
+        // Trigger all the onSave callbacks registered by the component or external code
         foreach ($this->onSave as $callback) {
-            $callback($this, $values); 
+            $callback($this, $values);
         }
     }
 
-
+    /**
+     * Renders the PhotoForm component
+     */
     public function render(): void
     {
         $this->template->isEditMode = $this->isEditMode;

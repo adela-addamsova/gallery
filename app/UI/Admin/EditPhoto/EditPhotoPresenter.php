@@ -7,23 +7,30 @@ namespace App\UI\Admin\EditPhoto;
 use App\Components\PhotoForm\PhotoForm;
 use App\Model\Facades\AdminFacade;
 use App\Model\Interfaces\PhotoFormFactory;
-use Exception;
 use Nette\Application\UI\Presenter;
 
 class EditPhotoPresenter extends Presenter
 {
+    /**
+     * Constructor
+     *
+     * @param PhotoFormFactory $photoFormFactory
+     */
     public function __construct(
         private PhotoFormFactory $photoFormFactory
     ) {}
 
-
     /** @var AdminFacade @inject */
     public $adminFacade;
 
+    /**
+     * Create the PhotoForm component
+     *
+     * @return PhotoForm
+     */
     protected function createComponentPhotoForm()
     {
         $id = $this->getParameter('id');
-        // $data = $this->adminFacade->getImage($id);
 
         $photoForm = $this->photoFormFactory->create();
 
@@ -33,8 +40,6 @@ class EditPhotoPresenter extends Presenter
         } else {
             $photoForm->setEditMode(false);
         }
-
-        bdump($id);
 
         $photoForm->onSave[] = function (PhotoForm $photoForm, $updateData) {
             $id = $this->getParameter('id');
@@ -49,13 +54,16 @@ class EditPhotoPresenter extends Presenter
             $this->adminFacade->updateImage($updateData, $id);
             $this->flashMessage('Photo updated successfully!', 'success');
             bdump($updateData);
-            // $this->redirect('this');  // Optionally redirect after saving
         };
 
         return $photoForm;
     }
 
-
+    /**
+     * Render the default template and passes the photo ID
+     *
+     * @param int $id
+     */
     public function renderDefault($id): void
     {
         $this->template->id = $id;

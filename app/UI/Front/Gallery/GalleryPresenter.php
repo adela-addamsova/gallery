@@ -6,8 +6,6 @@ namespace App\UI\Front\Gallery;
 
 use App\Components\Paginator\MyPaginator;
 use App\Model\Facades\ImageFacade;
-use Nette;
-use Nette\Application\LinkGenerator;
 use Nette\Application\UI\Presenter;
 
 final class GalleryPresenter extends Presenter
@@ -15,11 +13,22 @@ final class GalleryPresenter extends Presenter
     /** @var ImageFacade @inject */
     public $imageFacade;
 
+    /**
+     * Create the MyPaginator component
+     *
+     * @return MyPaginator
+     */
     protected function createComponentMyPaginator(): MyPaginator
     {
         return new MyPaginator();
     }
 
+    /**
+     * Render the gallery
+     *
+     * @param int $page
+     * @param string $category
+     */
     public function renderDefault(int $page = 1, string $category = 'default'): void
     {
         $itemsCount = $this->imageFacade->countImagesByCategory($category);

@@ -11,26 +11,27 @@ final class HomePresenter extends Nette\Application\UI\Presenter
 {
     /** @var ImageFacade @inject */
     public $imageFacade;
+
+    /**
+     * Render the home page
+     *
+     * @return void
+     */
     public function renderDefault(): void
-{
-    // Fetch categories from the 'categories' table
-    $categories = $this->imageFacade->getImageCategories();
+    {
+        $categories = $this->imageFacade->getImageCategories();
 
-    // Create an array to store the latest image for each category
-    $latestImages = [];
+        $latestImages = [];
 
-    // Fetch the latest image for each category
-    foreach ($categories as $category) {
-        $latestImage = $this->imageFacade->getLatestImage($category->id);
+        foreach ($categories as $category) {
+            $latestImage = $this->imageFacade->getLatestImage($category->id);
 
-        if ($latestImage !== null) {
-            $latestImages[$category->id] = $latestImage;
+            if ($latestImage !== null) {
+                $latestImages[$category->id] = $latestImage;
+            }
         }
+
+        $this->template->categories = $categories;
+        $this->template->latestImages = $latestImages;
     }
-
-    // Pass categories and latest images to the template
-    $this->template->categories = $categories;
-    $this->template->latestImages = $latestImages;
-}
-
 }

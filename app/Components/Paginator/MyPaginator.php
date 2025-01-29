@@ -7,66 +7,93 @@ use Nette\Utils\Paginator;
 
 class MyPaginator extends Control
 {
-   /** @var Paginator */
-   private $paginator;
+    /** @var Paginator */
+    private $paginator;
 
-   
-   private $baseLink;
+    private $baseLink;
 
-   public function __construct()
-   {
-        // $this->baseLink = $baseLink;
-       $this->paginator = new Paginator();
-       
-   }
+    /**
+     * Constructor for the MyPaginator component
+     * 
+     * Initializes a new instance of the Paginator class
+     */
+    public function __construct()
+    {
+        $this->paginator = new Paginator();
+    }
 
-   public function setItemsPerPage(int $itemsPerPage): void
-   {
-       $this->paginator->setItemsPerPage($itemsPerPage);
-   }
+    /**
+     * Set the number of items per page
+     * 
+     * @param int $itemsPerPage
+     */
+    public function setItemsPerPage(int $itemsPerPage): void
+    {
+        $this->paginator->setItemsPerPage($itemsPerPage);
+    }
 
-   public function setTotalItems(int $totalItems): void
-   {
-       $this->paginator->setItemCount($totalItems);
-   }
+    /**
+     * Set the total number of items
+     * 
+     * @param int $totalItems
+     */
+    public function setTotalItems(int $totalItems): void
+    {
+        $this->paginator->setItemCount($totalItems);
+    }
 
-   public function setPage(int $currentPage): void
-   {
-       $this->paginator->setPage($currentPage);
-   }
-   public function setBaseLink(string $baseLink): void
-   {
-       $this->baseLink = $baseLink;
-   }
+    /**
+     * Set the current page
+     * 
+     * @param int $currentPage
+     */
+    public function setPage(int $currentPage): void
+    {
+        $this->paginator->setPage($currentPage);
+    }
 
-   // Get the limit (number of items per page)
-   public function getLimit(): int
-   {
-       return $this->paginator->getLength();  // Returns items per page
-   }
+    /**
+     * Set the base link for pagination
+     * 
+     * @param string $baseLink
+     */
+    public function setBaseLink(string $baseLink): void
+    {
+        $this->baseLink = $baseLink;
+    }
 
-   // Get the offset (starting position of the current page)
-   public function getOffset(): int
-   {
-       return $this->paginator->getOffset();  // Returns the offset
-   }
+    /**
+     * Get the limit (number of items per page)
+     * 
+     * @return int 
+     */
+    public function getLimit(): int
+    {
+        return $this->paginator->getLength();
+    }
 
-   public function render(): void
-   {
-       $this->template->paginator = $this->paginator;
-       $this->template->baseLink = $this->baseLink;
-       $this->template->setFile(__DIR__ . '/myPaginator.latte');
-       $this->template->render();
+    /**
+     * Get the offset (starting position of the current page)
+     * 
+     * @return int
+     */
+    public function getOffset(): int
+    {
+        return $this->paginator->getOffset();
+    }
 
-    
+    /**
+     * Render the paginator component
+     * 
+     * Prepare the paginator and base link data for the template and render it
+     */
+    public function render(): void
+    {
+        $this->template->paginator = $this->paginator;
+        $this->template->baseLink = $this->baseLink;
+        $this->template->setFile(__DIR__ . '/myPaginator.latte');
+        $this->template->render();
+
         $this->redrawControl('content');
-    
-   }
-
-   
-
-//    public function getPaginator(): Paginator
-//    {
-//        return $this->paginator;
-//    }
+    }
 }

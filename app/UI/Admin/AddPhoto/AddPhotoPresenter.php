@@ -11,29 +11,33 @@ use Nette\Application\UI\Presenter;
 
 class AddPhotoPresenter extends Presenter
 {
+    /**
+     * Constructor for AddPhotoPresenter
+     * 
+     * @param PhotoFormFactory $photoFormFactory - Factory for creating photo form components
+     */
     public function __construct(
-		private PhotoFormFactory $photoFormFactory
-	) {
-	}
-
+        private PhotoFormFactory $photoFormFactory
+    ) {}
 
     /** @var AdminFacade @inject */
     public $adminFacade;
 
+    /**
+     * Creates the photo form component
+     * 
+     * @return PhotoForm
+     */
     protected function createComponentPhotoForm()
     {
-
         $photoForm = $this->photoFormFactory->create();
 
         $photoForm->setEditMode(false);
 
-		$photoForm->onSave[] = function (PhotoForm $photoForm, $data) {
-			$this->flashMessage('Photo added successfuly!', 'success');
-		};
+        $photoForm->onSave[] = function (): void {
+            $this->flashMessage('Photo added successfully!', 'success');
+        };
 
-        
-
-
-		return $photoForm;
+        return $photoForm;
     }
 }

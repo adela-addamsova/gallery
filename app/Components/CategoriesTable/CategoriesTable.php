@@ -6,16 +6,28 @@ namespace App\Components\CategoriesTable;
 
 use App\Model\Facades\AdminFacade;
 use Nette\Application\UI\Control;
-use Nette\Utils\Paginator;
 
-class CategoriesTable extends Control {
-  
+class CategoriesTable extends Control
+{
+
+    // AdminFacade instance for interacting with the database to fetch categories
     private AdminFacade $adminFacade;
+
+    /**
+     * Constructor for the CategoriesTable component
+     * 
+     * @param AdminFacade $adminFacade - Used to interact with the database to fetch categories
+     */
     public function __construct(AdminFacade $adminFacade)
     {
         $this->adminFacade = $adminFacade;
     }
 
+    /**
+     * Renders the Categories Table component
+     * 
+     * Fetches categories from the AdminFacade and passes them to the template for rendering
+     */
     public function render(): void
     {
         $columns = [
@@ -26,8 +38,10 @@ class CategoriesTable extends Control {
         ];
 
         $categories = $this->adminFacade->showCategories();
+
         $this->template->categories = $categories;
         $this->template->columns = $columns;
+
         $this->template->setFile(__DIR__ . '/CategoriesTable.latte');
         $this->template->render();
     }
