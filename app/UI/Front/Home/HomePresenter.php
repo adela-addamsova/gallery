@@ -21,7 +21,11 @@ final class HomePresenter extends Nette\Application\UI\Presenter
 
     // Fetch the latest image for each category
     foreach ($categories as $category) {
-        $latestImages[$category->id] = $this->imageFacade->getLatestImage($category->id);
+        $latestImage = $this->imageFacade->getLatestImage($category->id);
+
+        if ($latestImage !== null) {
+            $latestImages[$category->id] = $latestImage;
+        }
     }
 
     // Pass categories and latest images to the template
