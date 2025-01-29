@@ -1,6 +1,4 @@
-{block title}{$category|capitalize}{/block} 
-
-{block content}
+{block title}{$category|capitalize}{/block} {block content}
 <!-- Header-->
 <header class="py-5 gallery-page-head" style="background-color: black">
   <div class="container px-4 px-lg-5 my-5 gallery-container">
@@ -10,7 +8,7 @@
     </div>
   </div>
 </header>
-  {snippet content}
+{snippet content}
 <section id="gallery" class="gallery-page section bg-light ajax">
   <div
     class="container-fluid"
@@ -18,9 +16,7 @@
     data-aos-delay="100"
     style="width: 95%"
   >
-
     <div class="row gy-4 justify-content-center ajax">
-    
       {foreach $images as $image}
       <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
         <div class="gallery-item h-100">
@@ -42,18 +38,11 @@
         </div>
       </div>
       <!-- End Gallery Item -->
-      {/foreach}
-      
-
-        {control myPaginator}
-
-    
-    
+      {/foreach} {control myPaginator}
     </div>
-
   </div>
 </section>
-    {/snippet}
+{/snippet}
 <!-- /Gallery Section -->
 
 <script src="{$basePath}/js/glightbox.min.js"></script>
