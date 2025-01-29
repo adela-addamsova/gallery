@@ -1,16 +1,22 @@
-{block title}Admin{/block} {block content}
+<!-- Page title -->
+{block title}Admin{/block}
 
+{block content}
+
+<!-- Admin section -->
 <section
   id="admin"
   class="admin section bg-light"
   style="width: 80%; margin: auto; padding: 6rem 0"
 >
+  <!-- Container for content -->
   <div
     class="container-fluid"
     data-aos="fade-up"
     data-aos-delay="100"
     style="width: 95%"
   >
+    <!-- Container for flash messages -->
     <div class="w-100" id="flash-container" style="margin-bottom: 4rem">
       <div
         class="alert alert-{$flash->type} mx-auto card-body text-center mb-3"
@@ -21,20 +27,24 @@
         {$flash->message}
       </div>
     </div>
+    <!-- End container for flash messages -->
+
+    <!-- Categories table -->
     <div class="row gy-4 justify-content-center mb-5">
       <h1>Categories</h1>
       {control categoriesTable}
     </div>
-    {*
-    <div class="row gy-4 justify-content-center">
-      <h1>Images</h1>
-      {control imagesTable}
-    </div>
-    *} {snippet content}
+    <!-- End categories table -->
+
+    <!-- Snippet for dynamic content -->
+    {snippet content}
+    
+    <!-- Images table -->
     <div class="table-responsive">
       <h1>Images</h1>
       <table class="table table-hover">
         <thead>
+          <!-- Header row -->
           <tr>
             <th>Preview</th>
             {foreach $columns as $key => $column}
@@ -43,15 +53,16 @@
             <th>Update</th>
             <th>Delete</th>
           </tr>
+          <!-- End header row -->
         </thead>
         <tbody>
+          <!-- Table rows -->
           {foreach $images as $image}
           <tr>
             <td>
               <img src="{$basePath}/{$image->thumb_path}" style="width: 5rem" />
             </td>
             {foreach $columns as $key => $header}
-
             <td>{$image->$key}</td>
             {/foreach}
             <td>
@@ -75,51 +86,21 @@
               </a>
             </td>
           </tr>
+          <!-- End table rows -->
           {/foreach}
         </tbody>
       </table>
 
+      <!-- Include paginator control -->
       {control myPaginator}
     </div>
+    <!-- End images table -->
+
     {/snippet}
+    <!-- End snippet -->
   </div>
+  <!-- End container -->
 </section>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-    if (localStorage.getItem("flashMessage")) {
-      let flashMessage = localStorage.getItem("flashMessage");
-
-      document.getElementById("flash-container").innerHTML =
-        '<div class="alert alert-success mx-auto" role="alert">' +
-        flashMessage +
-        "</div>";
-
-      localStorage.removeItem("flashMessage");
-    }
-
-    $(".delete").on("click", function () {
-      event.preventDefault();
-      let confirmMessage = $(this).data("message");
-
-      if (confirm(confirmMessage)) {
-        let url = $(this).attr("href");
-
-        $.ajax({
-          url: url,
-          type: "POST",
-          success: function (data) {
-            if (data.redirect) {
-              localStorage.setItem("flashMessage", data.flashMessage);
-
-              window.location.href = data.redirect;
-            }
-          },
-        });
-      }
-    });
-  });
-</script>
+<!-- End admin section -->
 
 {/block}

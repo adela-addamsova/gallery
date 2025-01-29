@@ -1,5 +1,8 @@
-{block title}{$category|capitalize}{/block} {block content}
-<!-- Header-->
+{block title}{$category|capitalize}{/block}
+
+{block content}
+
+<!-- Header section -->
 <header class="py-5 gallery-page-head" style="background-color: black">
   <div class="container px-4 px-lg-5 my-5 gallery-container">
     <div class="text-left text-white">
@@ -8,48 +11,38 @@
     </div>
   </div>
 </header>
+<!-- End header -->
+
+<!-- Snippet for dynamic content -->
 {snippet content}
+
+<!-- Gallery section -->
 <section id="gallery" class="gallery-page section bg-light ajax">
-  <div
-    class="container-fluid"
-    data-aos="fade-up"
-    data-aos-delay="100"
-    style="width: 95%"
-  >
+  <div class="container-fluid" data-aos="fade-up" data-aos-delay="100" style="width: 95%">
     <div class="row gy-4 justify-content-center ajax">
+      <!-- Gallery items -->
       {foreach $images as $image}
       <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
         <div class="gallery-item h-100">
-          <img
-            src="{$basePath}{$image->image_thumb}"
-            class="img-fluid"
-            alt=""
-          />
-          <div
-            class="gallery-links d-flex align-items-center justify-content-center"
-          >
-            <a
-              href="{$basePath}{$image->image_path}"
-              title="{$image->description}"
-              class="glightbox preview-link ajax"
-              ><i class="bi bi-arrows-angle-expand"></i
-            ></a>
+          <img src="{$basePath}{$image->image_thumb}" class="img-fluid" alt="" />
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <a href="{$basePath}{$image->image_path}" title="{$image->description}" class="glightbox preview-link ajax">
+              <i class="bi bi-arrows-angle-expand"></i>
+            </a>
           </div>
         </div>
       </div>
-      <!-- End Gallery Item -->
-      {/foreach} {control myPaginator}
+      <!-- End gallery items -->
+      {/foreach}
+
+      <!-- Paginator control -->
+      {control myPaginator}
     </div>
   </div>
 </section>
-{/snippet}
-<!-- /Gallery Section -->
+<!-- End gallery section -->
 
-<script src="{$basePath}/js/glightbox.min.js"></script>
-<script>
-  // Initialize GLightbox
-  const lightbox = GLightbox({
-    selector: ".glightbox",
-  });
-</script>
+{/snippet}
+<!-- End snippet-->
+
 {/block}

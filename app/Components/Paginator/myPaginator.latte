@@ -4,7 +4,7 @@
 >
   <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-      <!-- Previous Page (no circle) -->
+      <!-- Previous Page -->
       <li class="page-item{if $paginator->isFirst()} disabled{/if}">
         <a
           class="page-link ajax"
@@ -14,15 +14,17 @@
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
+      <!-- End previous page -->
 
-      <!-- Page Numbers (circle) -->
+      <!-- page Numbers -->
       {for $i = 1; $i <= $paginator->pageCount; $i++}
       <li class="page-item {if $i == $paginator->page}active{/if}">
         <a class="page-link circle-link ajax" href="{$baseLink}{$i}">{$i}</a>
       </li>
       {/for}
+      <!-- End page numbers -->
 
-      <!-- Next Page (no circle) -->
+      <!-- Next page -->
       <li class="page-item{if $paginator->isLast()} disabled{/if}">
         <a
           class="page-link ajax"
@@ -32,6 +34,7 @@
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
+       <!-- End next page -->
     </ul>
   </nav>
 </div>

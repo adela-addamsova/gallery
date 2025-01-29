@@ -3,58 +3,53 @@
 {block content}
 
 <!-- Preloader -->
-      {* <div id="preloader">
-        <div class="line"></div>
-      </div> *}
+<div id="preloader">
+  <div class="line"></div>
+</div>
 
-<!-- Masthead-->
+<!-- Header section -->
 <header class="masthead">
-  <div
-    class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center"
-  >
+  <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
     <div class="d-flex justify-content-center">
       <div class="text-center">
         <h1 class="mx-auto my-0 text-uppercase main-h1">Photo by Jackie</h1>
-        <h2
-          class="text-white-50 mx-auto mt-2 mb-5"
-          style="text-decoration: underline var(--site-color-01); line-height: 3rem"
-        >
-          Welcome to the first oficial webpage where I present my photography
-          collection
+        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="text-decoration: underline var(--site-color-01); line-height: 3rem">
+          Welcome to the first oficial webpage where I present my photography collection
         </h2>
       </div>
     </div>
   </div>
 </header>
+<!-- End header -->
 
-<!-- Gallery -->
+<!-- Gallery section -->
 <section class="gallery-section bg-light" id="gallery">
-{* <div class="container" data-aos="fade-up" data-aos-delay="100"> *}
   <div class="container px-4 px-lg-5">
+    <!-- Gallery items -->
     {foreach $categories as $category}
     <div class="container" data-aos="fade-up" data-aos-delay="50">
-    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-      <div class="col-lg-6">
-        <img class="img-fluid lazyload" src="{$basePath}{$category->background_path}" alt="..." />
-      </div>
-      
-      <div class="col-lg-6{if $iterator->even} order-lg-first{/if}">
-      <a href="{$basePath}/gallery/{$category->name}" style="text-decoration: none;">
-        <div class="bg-black text-center h-100 gallery">
-          <div class="d-flex h-100">
-            <div class="gallery-text w-100 my-auto text-center text-lg-right">
-              <h4 class="text-white">{$category->name}</h4>
-            </div>
-          </div>
+      <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+        <div class="col-lg-6">
+          <img class="img-fluid lazyload" src="{$basePath}{$category->background_path}" alt="..." />
         </div>
-        </a>
+        <div class="col-lg-6{if $iterator->even} order-lg-first{/if}">
+          <a href="{$basePath}/gallery/{$category->name}" style="text-decoration: none;">
+            <div class="bg-black text-center h-100 gallery">
+              <div class="d-flex h-100">
+                <div class="gallery-text w-100 my-auto text-center text-lg-right">
+                  <h4 class="text-white">{$category->name}</h4>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
-       </div>
     </div>
     {/foreach}
+    <!-- End gallery items -->
   </div>
-  {* </div> *}
 </section>
+<!-- End gallery section -->
 
 <!-- Latest images slider -->
 <section class="slider-section bg-light" id="slider">
@@ -62,62 +57,45 @@
     <div class="row gx-4 gx-lg-5">
       <div class="col-md-10 col-lg-8 mx-auto text-center">
         <!-- Carousel wrapper -->
-        <div
-          id="carouselExampleCaptions"
-          class="carousel slide"
-          data-bs-ride="false"
-        >
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
           <div class="carousel-indicators">
+            <!-- Carousel indicators -->
             {foreach $latestImages as $image}
-            <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to={$iterator->counter - 1}
-            {if $iterator->isFirst()}class="active" aria-current="true"{/if}
-            aria-label="Slide {$iterator->counter}"
-          ></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to={$iterator->counter - 1} {if $iterator->isFirst()}class="active" aria-current="true"{/if} aria-label="Slide {$iterator->counter}"></button>
             {/foreach}
+            <!-- End carousel indicators -->
           </div>
 
           <div class="carousel-inner">
+            <!-- Carousel items -->
             {foreach $latestImages as $image}
-
             <div class="carousel-item{if $iterator->isFirst()} active{/if}">
-              <img
-                src="{$basePath}{$image->image_thumb}"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img src="{$basePath}{$image->image_thumb}" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5>Latest image in category:</h5>
                 <p>{$image->category_name}</p>
               </div>
             </div>
             {/foreach}
+            <!-- End carousel items -->
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-            style="width: 5%; background: rgba(255, 255, 255, 0.3)"
-          >
+
+          <!-- Carousel controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" style="width: 5%; background: rgba(255, 255, 255, 0.3)">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-            style="width: 5%; background: rgba(255, 255, 255, 0.3)"
-          >
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" style="width: 5%; background: rgba(255, 255, 255, 0.3)">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          <!-- End carousel controls -->
         </div>
+        <!-- End carousel wrapper -->
       </div>
     </div>
   </div>
 </section>
+<!-- End latest images slider -->
+
 {/block}

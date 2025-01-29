@@ -1,20 +1,15 @@
-{extends ../@layout.latte} {block body}
+{extends ../@layout.latte}
+
+
+{block body}
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="#page-top"
-      ><img src="{$basePath}/img/main-page/camera_icon.png" style="width: 3rem"
-    /></a>
-    <button
-      class="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarResponsive"
-      aria-controls="navbarResponsive"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <a class="navbar-brand" href="#page-top">
+      <img src="{$basePath}/img/main-page/camera_icon.png" style="width: 3rem"/>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -32,44 +27,39 @@
     </div>
   </div>
 </nav>
+<!-- End navigation-->
+
+<!-- Flash messages -->
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">
   {$flash->message}
 </div>
 
-{include content} {block scripts}
-<script src="https://unpkg.com/nette-forms@3"></script>
-{/block}
+
+{include content}
+
+
+<!-- Footer-->
 
 <!-- Footer style -->
 {if isLinkCurrent('Home:default')}
 <section class="footer-section" id="footer"></section>
 {/if}
 
-<!-- Contact-->
+<!-- Contact section -->
 <section class="contact-section bg-black">
   <div class="container px-4 px-lg-5">
     <div class="social d-flex justify-content-center">
-      <a
-        class="mx-2"
-        href="https://www.instagram.com/photo_by_jackie/"
-        target="_blank"
-        ><i class="fa-brands fa-instagram"></i
-      ></a>
-      <a
-        class="mx-2"
-        href="https://www.linkedin.com/in/adéla-adámková-216566255"
-        target="_blank"
-        ><i class="fa-brands fa-linkedin"></i
-      ></a>
-      <a class="mx-2" href="https://github.com/adela-addamsova" target="_blank"
-        ><i class="fab fa-github"></i
-      ></a>
+      <a class="mx-2" href="https://www.instagram.com/photo_by_jackie/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a class="mx-2" href="https://www.linkedin.com/in/adéla-adámková-216566255" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a class="mx-2" href="https://github.com/adela-addamsova" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </div>
 </section>
-<!-- Footer-->
+<!-- End contact section -->
+
 <footer class="footer bg-black small text-center text-white-50">
   <div class="container px-4 px-lg-5">Copyright &copy;Photo by Jackie 2025</div>
 </footer>
+<!-- End footer -->
 
 {/block}
