@@ -1,0 +1,35 @@
+{form form class=>"bg-white rounded shadow-5-strong p-4"}
+<div class="form-outline mb-4">
+    <h2>{if $isEditMode}Edit photo{else}Add photo{/if}</h2>
+    </div>
+
+             
+              <div class="form-outline mb-4" data-mdb-input-init>
+                {input description,
+                      class=>"form-control"}
+              {label description, class => "form-label" /} 
+              </div>
+
+              <div class="form-outline mb-4" data-mdb-input-init>
+                {input category_id,
+                      class=>"form-control"}
+              {label category_id, class => "form-label" /} 
+              </div>
+
+              <div class="form-outline mb-4" data-mdb-input-init>
+                {input path,
+                      class=>"form-control"}
+              {label path, class => "form-label" /} 
+              </div>
+
+              <div class="form-outline mb-4" data-mdb-input-init>
+                {input thumb_path,
+                      class=>"form-control"}
+              {label thumb_path, class => "form-label" /} 
+              </div>
+              <div class="form-outline mb-4" data-mdb-input-init>
+                {input send,
+                      class=>"form-btn"}
+              </div>
+          
+            {/form}
