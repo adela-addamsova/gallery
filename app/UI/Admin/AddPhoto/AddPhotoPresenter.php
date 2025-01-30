@@ -34,7 +34,8 @@ class AddPhotoPresenter extends Presenter
 
         $photoForm->setEditMode(false);
 
-        $photoForm->onSave[] = function (): void {
+        $photoForm->onSave[] = function (PhotoForm $photoForm, $data): void {
+            $this->adminFacade->insertImage($data);
             $this->flashMessage('Photo added successfully!', 'success');
         };
 
