@@ -7,9 +7,9 @@ namespace App\UI\Admin\EditPhoto;
 use App\Components\PhotoForm\PhotoForm;
 use App\Model\Facades\AdminFacade;
 use App\Model\Interfaces\PhotoFormFactory;
-use Nette\Application\UI\Presenter;
+use App\UI\Admin\BasePresenter;
 
-class EditPhotoPresenter extends Presenter
+class EditPhotoPresenter extends BasePresenter
 {
     /**
      * Constructor

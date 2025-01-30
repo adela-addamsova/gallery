@@ -8,9 +8,9 @@ use App\Components\CategoriesTable\CategoriesTable as CategoriesTableCategoriesT
 // use App\Components\ImagesTable\ImagesTable;
 use App\Components\Paginator\MyPaginator;
 use App\Model\Facades\AdminFacade;
-use Nette\Application\UI\Presenter;
+use App\UI\Admin\BasePresenter;
 
-class AdminPresenter extends Presenter {
+class AdminPresenter extends BasePresenter {
 
     /** @var \App\Components\ImagesTable\ImagesTable @inject */
     public $imagesTable;
