@@ -1,25 +1,79 @@
-{block title}About{/block}
+{block title}About{/block} {block content}
 
-{block content}
-
-<header class="about" style="background-color: black">
-  <div class="container px-4 px-lg-5 my-5">
+<!-- Header section -->
+<header class="py-5 gallery-page-head" style="background-color: black">
+  <div class="container px-4 px-lg-5 my-5 gallery-container">
     <div class="text-left text-white">
-      <h1 class="display-4 fw-bolder">About</h1>
+      <h1 class="display-4 fw-bolder">About me</h1>
     </div>
   </div>
 </header>
+<!-- End header -->
 
- <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Full Width Backgrounds</h2>
-                        <p class="lead">A single, lightweight helper class allows you to add engaging, full width background images to sections of your page.</p>
-                        <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p>
-                    </div>
-                </div>
+<div class="about-page">
+  <!-- About me -->
+  <section id="about-2" class="about-2 section">
+    <div class="container">
+      <div class="content">
+        <div class="row justify-content-center">
+          <div
+            class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-3"
+          >
+            <div
+              class="img-wrap text-center text-md-left"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="img">
+                <img
+                  src="{$basePath}/img/main-page/yo1.jpg"
+                  alt="circle image"
+                  class="img-fluid"
+                />
+              </div>
             </div>
-        </section>
+          </div>
+
+          <div
+            class="offset-md-0 offset-lg-1 col-sm-12 col-md-5 col-lg-5 col-xl-4"
+            data-aos="fade-up"
+          >
+            <div class="px-3">
+              {*
+              <span class="content-subtitle"
+                >Photographer and fullstack developer</span
+              >
+              *}
+              <h2 class="content-title text-start">
+                Photographer and fullstack developer
+              </h2>
+              <p class="lead">
+                My name is Adéla Adámková. This page combines my presentation as
+                a photographer and as a web developer.
+              </p>
+              <p class="mb-3">
+                <span style="text-decoration: underline var(--site-color-02)">Photography:</span>
+                My love for photography started years ago when I got my first
+                Canon camera. Currently I'm using Canon EOS 5D Mark IV. I often
+                capture landscapes but I'm the most passionate about macro
+                photography.
+              </p>
+              <p class="">
+                <span style="text-decoration: underline var(--site-color-02)">Web developement:</span>
+                I'm junior fullstack developer. I use PHP and currently Nette as a framework. Which is also how was this page created.
+              </p>
+              {*
+              <p>
+                <a href="#" class="btn-get-started">Get Started</a>
+              </p>
+              *}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End about me -->
+</div>
 
 {/block}
