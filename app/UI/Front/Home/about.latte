@@ -1,4 +1,6 @@
-{block title}About{/block} {block content}
+{block title}About{/block} 
+
+{block content}
 
 <!-- Header section -->
 <header class="py-5 gallery-page-head" style="background-color: black">
@@ -12,12 +14,12 @@
 
 <div class="about-page">
   <!-- About me -->
-  <section id="about-2" class="about-2 section">
+  <section id="about-2" class="about-2 section mb-5">
     <div class="container">
       <div class="content">
         <div class="row justify-content-center">
           <div
-            class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-3"
+            class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-3" style="display: flex; align-items: center;"
           >
             <div
               class="img-wrap text-center text-md-left"
@@ -34,23 +36,20 @@
             </div>
           </div>
 
+
           <div
-            class="offset-md-0 offset-lg-1 col-sm-12 col-md-5 col-lg-5 col-xl-4"
+            class="offset-md-0 offset-lg-1 col-sm-12 col-md-5 col-lg-5 col-xl-4" style= "margin: 0 1rem;"
             data-aos="fade-up"
           >
-            <div class="px-3">
-              {*
-              <span class="content-subtitle"
-                >Photographer and fullstack developer</span
-              >
-              *}
+            <div class="px-3 contact-text">
+            
               <h2 class="content-title text-start">
                 Photographer and fullstack developer
               </h2>
-              <p class="lead">
+              <p class="lead"><b>
                 My name is Adéla Adámková. This page combines my presentation as
                 a photographer and as a web developer.
-              </p>
+              </b></p>
               <p class="mb-3">
                 <span style="text-decoration: underline var(--site-color-02)">Photography:</span>
                 My love for photography started years ago when I got my first
@@ -62,11 +61,6 @@
                 <span style="text-decoration: underline var(--site-color-02)">Web developement:</span>
                 I'm junior fullstack developer. I use PHP and currently Nette as a framework. Which is also how was this page created.
               </p>
-              {*
-              <p>
-                <a href="#" class="btn-get-started">Get Started</a>
-              </p>
-              *}
             </div>
           </div>
         </div>
@@ -74,6 +68,38 @@
     </div>
   </section>
   <!-- End about me -->
+
+  <!-- Background image -->
+
+  <section id="contact" class="contact section" style="margin-bottom: 10rem;">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+      </div><!-- End Section Title -->
+
+    <!-- Contact form -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" style="display:flex; flex-direction: column; text-align: center">
+          <h2 style="font-size: 3rem; padding-top: 5rem;">Contact me</h2>
+          <span style="width: 80%; margin: 2rem auto;">Feel free to leave me a message and ask about anything!</span>
+          </div>
+
+          <div class="col-lg-6">
+
+        {control contactForm}
+           
+          </div><!-- End Contact form -->
+          
+
+        </div>
+
+      </div>
+
+    </section><!-- End contact section -->
+
 </div>
 
+
+
 {/block}
+
