@@ -1,0 +1,21 @@
+{snippet contactFormSnippet}
+
+<form n:name="contactForm" class="php-email-form ajax" data-form-name="contactForm">
+  <div class="row gy-4">
+    <div class="col-md-6">{input name class=>"form-control ajax"}</div>
+    <div class="col-md-6">{input email class=>"form-control ajax"}</div>
+    <div class="col-md-12">{input subject class=>"form-control ajax"}</div>
+    <div class="col-md-12">{input message class=>"form-control ajax"}</div>
+
+  <div class="col-md-12 text-center">
+        <div class="loading">Loading</div>
+        <div class="error-message"></div>
+        <div class="sent-message form-response"><p class="message"></p></div>
+
+                  {input send, class=>"form-btn"}
+                </div>
+  </div>
+
+</form>
+
+{/snippet}

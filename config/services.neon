@@ -3,7 +3,8 @@ services:
 	- App\Components\ImagesTable\ImagesTable
 	- App\Components\CategoriesTable\CategoriesTable
 	- App\Components\Paginator\MyPaginator
-
+	- App\Components\ContactForm\ContactForm
+		
 search:
 	-	in: %appDir%
 		classes:

@@ -19,6 +19,7 @@ latte:
 	strictParsing: yes
 	extensions:
 		- App\UI\Accessory\LatteExtension
+		
 
 
 di:
