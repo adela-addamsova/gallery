@@ -53,7 +53,6 @@ class EditPhotoPresenter extends BasePresenter
                 ];
             $this->adminFacade->updateImage($updateData, $id);
             $this->flashMessage('Photo updated successfully!', 'success');
-            bdump($updateData);
         };
 
         return $photoForm;
@@ -67,5 +66,7 @@ class EditPhotoPresenter extends BasePresenter
     public function renderDefault($id): void
     {
         $this->template->id = $id;
+        $image = $this->adminFacade->getImage($id);
+        $this->template->image = $image;
     }
 }
