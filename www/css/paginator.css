@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+
+/* Make the page numbers circular and center the text */
+.pagination .page-item .circle-link {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding: 0;
+    text-align: center;
+  }
+  
+  /* Make the arrows inherit background and have no border */
+  .pagination .page-item .page-link {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 0;
+  }
+  
+  /* Active page style (circle) */
+  .pagination .page-item.active .circle-link {
+    background-color:   var(--site-color-02);
+    color: white;
+  }
+  
+  /* Disabled state for page links (no circle) */
+  .pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  /* Disabled state for arrows (no background and no border) */
+  .pagination .page-item.disabled .page-link span {
+    background-color: transparent;
+    color: #6c757d;
+    border: none;
+  }
+  
+  /* Hover effect for arrows */
+  .pagination .page-item .page-link:hover {
+    background-color: inherit;
+    color: rgb(100, 100, 100);
+  }
+  
+  /* Style the arrows */
+  .pagination .page-item .page-link span {
+    display: inline-block;
+    font-size: 18px;
+    background-color: inherit;
+    color: inherit;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Spacing between the page items */
+  .pagination .page-item {
+    margin-right: 5px;
+  }
+  

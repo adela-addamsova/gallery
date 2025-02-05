@@ -1,0 +1,64 @@
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about-2 .content {
+    background-color: var(--surface-color);
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .about-2 .content-subtitle {
+    font-size: 15px;
+    margin-bottom: 10px;
+    display: block;
+    color: var(--default-color);
+  }
+  
+  .about-2 .content-title {
+    color: var(--heading-color);
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  
+  .about-2 p {
+    line-height: 1.7;
+    color: var(--default-color);
+  }
+  
+  .about-2 .lead {
+    line-height: 1.6;
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--default-color);
+  }
+  
+  .about-page {
+    margin: 4rem 0;
+  }
+
+  
+/* .about {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/yo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  
+  @media (max-width: 768px) {
+  
+    .about {
+      background: black;
+      height: 30vh;
+      min-height: 0;
+      padding: 7rem 0 0 0;
+    }
+  
+    
+  } */
