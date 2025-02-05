@@ -20,9 +20,20 @@ latte:
 	extensions:
 		- App\UI\Accessory\LatteExtension
 		
-
-
 di:
 	export:
 		parameters: no
 		tags: no
+
+extensions:
+    translation: Contributte\Translation\DI\TranslationExtension
+
+translation:
+    locales:
+        whitelist: [cs, en]
+        default: en
+        fallback: [en]
+    dirs:
+        - %appDir%/lang
+    localeResolvers:
+        - Contributte\Translation\LocalesResolvers\Router
