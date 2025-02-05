@@ -19,16 +19,15 @@ final class RouterFactory
 
 		$router->addRoute('admin/editPhoto/<id>', 'Admin:EditPhoto:default');
 
-		$router->addRoute('gallery/<category>/<page>', ['module' => 'Front', 'presenter' => 'Gallery', 'action' => 'default', 'category' => 'default', 'page' => 1]);
+		$router->addRoute('<locale>/gallery/<category>/<page>', ['module' => 'Front', 'presenter' => 'Gallery', 'action' => 'default', 'category' => 'default', 'page' => 1]);
 
 		$router->addRoute('admin/<page \d+>', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default']);
 
-		$router->addRoute('about', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'about']);
-
+		$router->addRoute('<locale>/about', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'about']);
 
 		$router->addRoute('admin/<presenter>/<action>[</id>]', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default', 'id' => null]);
 		
-		$router->addRoute('<presenter>/<action>', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'default']);
+		$router->addRoute('<locale>/<presenter>/<action>', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'default', 'locale' => 'en']);
 
 		return $router;
 	}
