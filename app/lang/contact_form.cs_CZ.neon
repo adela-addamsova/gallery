@@ -1,0 +1,13 @@
+name: "Vaše jméno"
+subject: "Předmět"
+email: "Váš email"
+message: "Zpráva"
+send: "Odeslat zprávu"
+validation:
+    required_name: "Prosím zadejte své jméno."
+    required_subject: "Prosím zadejte předmět."
+    required_email: "Prosím zadejte svůj email."
+    valid_email: "Prosím zadejte platnou emailovou adresu."
+    required_message: "Prosím zadejte svou zprávu."
+success_message: "Vaše zpráva byla odeslána. Děkuji!"
+error_message: "There was an error sending your message. Please try again later."

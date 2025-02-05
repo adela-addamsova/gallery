@@ -1,0 +1,13 @@
+name: "Your Name"
+subject: "Subject"
+email: "Your Email"
+message: "Message"
+send: "Send Message"
+validation:
+    required_name: "Please enter your name."
+    required_subject: "Please enter your subject."
+    required_email: "Please enter your email."
+    valid_email: "Please enter a valid email address."
+    required_message: "Please enter your message."
+success_message: "Your message has been sent. Thank you!"
+error_message: "Při odeslání zprávy došlo k chybě. Zkuste to prosím znovu."
