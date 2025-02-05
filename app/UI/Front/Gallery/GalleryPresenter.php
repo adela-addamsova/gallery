@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\UI\Front\Gallery;
 
+use App\Components\Navbar;
+use App\Front\BasePresenter;
 use App\Components\Paginator\MyPaginator;
 use App\Model\Facades\ImageFacade;
-use Nette\Application\UI\Presenter;
 
-final class GalleryPresenter extends Presenter
+final class GalleryPresenter extends BasePresenter
 {
     /** @var ImageFacade @inject */
     public $imageFacade;
@@ -31,12 +32,25 @@ final class GalleryPresenter extends Presenter
      */
     public function renderDefault(int $page = 1, string $category = 'default'): void
     {
+        $this->template->categories = $this->imageFacade->getImageCategories();
+        $this->template->activeCategory = $category;
+
         $itemsCount = $this->imageFacade->countImagesByCategory($category);
 
         $this['myPaginator']->setTotalItems($itemsCount);
         $this['myPaginator']->setPage($page);
         $this['myPaginator']->setItemsPerPage(9);
-        $this['myPaginator']->setBaseLink($this->link('this', ['page' => 1]));
+        // Inside your presenter action
+
+        // Get the current locale from the request
+        $locale = $this->getParameter('locale');
+
+        // Set the base link for the paginator, including the locale and page parameters
+        $this['myPaginator']->setBaseLink($this->link('this', [
+            'locale' => $locale,
+            'page' => 1
+        ]));
+
 
         $offset = $this['myPaginator']->getOffset();
         $length = $this['myPaginator']->getLimit();
@@ -48,5 +62,14 @@ final class GalleryPresenter extends Presenter
         $this->template->category = $category;
 
         $this->redrawControl('content');
+    }
+
+     /**
+     * Creates the navbar component for all pages
+     * @return Navbar
+     */
+    protected function createComponentNavbar(): Navbar
+    {
+        return new Navbar($this->translator, $this->template->locale);
     }
 }

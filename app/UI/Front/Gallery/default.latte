@@ -1,14 +1,14 @@
-{block title}{$category|capitalize}{/block}
+{block title}{='main.category_' . strtolower($category)|translate|capitalize}{/block}
 
 {block content}
 
 <!-- Header section -->
 <header class="py-5 gallery-page-head" style="background-color: black">
-  <div class="container px-4 px-lg-5 my-5 gallery-container">
+  <div class="container px-4 px-lg-5 gallery-container">
     <div class="text-left text-white">
-      <h1 class="display-4 fw-bolder">{$category|capitalize} photography</h1>
+      <h1 class="display-4 fw-bolder">{='main.category_' . strtolower($category)|translate|capitalize}</h1>
       <p class="lead fw-normal text-white-50 mb-0">Some rubbish to say.</p>
-    </div>
+</div>
   </div>
 </header>
 <!-- End header -->
@@ -20,20 +20,28 @@
 <section id="gallery" class="gallery-page section bg-light ajax">
   <div class="container-fluid" data-aos="fade-up" data-aos-delay="100" style="width: 95%">
     <div class="row gy-4 justify-content-center ajax">
+
+    <!-- Gallery nav -->
+   <ul class="portfolio-filters isotope-filters">
+      {foreach $categories as $category_nav}
+          <li style="cursor:pointer;" onclick="window.location.href='{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])|noescape}';"{if strtolower($activeCategory) == strtolower($category_nav->name)}class="active"{/if}>
+          <a href="{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])}">{='main.category_' . strtolower($category_nav->name)|translate|capitalize}</a>
+          </li>
+      {/foreach}
+    </ul>
+    <!-- End gallery nav -->
+    
       <!-- Gallery items -->
       {foreach $images as $image}
       <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
-        <div class="gallery-item h-100">
-          <img src="{$basePath}{$image->image_thumb}" class="img-fluid" alt="" />
-          <div class="gallery-links d-flex align-items-center justify-content-center">
-            <a href="{$basePath}{$image->image_path}" title="{$image->description}" class="glightbox preview-link ajax">
-              <i class="bi bi-arrows-angle-expand"></i>
-            </a>
-          </div>
+       <div class="gallery-item h-100">
+          <a href="{$basePath}{$image->image_path}" title="{$image->description}" data-fancybox="gallery" data-caption="{$image->description}" data-thumb="{$basePath}{$image->image_thumb}">
+            <img src="{$basePath}{$image->image_thumb}" class="img-fluid" alt="" />
+          </a>
         </div>
       </div>
-      <!-- End gallery items -->
       {/foreach}
+      <!-- End gallery items -->
 
       <!-- Paginator control -->
       {control myPaginator}
@@ -41,7 +49,6 @@
   </div>
 </section>
 <!-- End gallery section -->
-
 {/snippet}
 <!-- End snippet-->
 

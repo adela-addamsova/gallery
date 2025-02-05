@@ -4,20 +4,46 @@ declare(strict_types=1);
 
 namespace App\UI\Front\Home;
 
+use App\Front\BasePresenter;
 use App\Components\ContactForm\ContactForm;
+use App\Components\Navbar;
 use App\Model\Facades\ImageFacade;
-use Nette;
+use Contributte\Translation\Translator;
 
-final class HomePresenter extends Nette\Application\UI\Presenter
+final class HomePresenter extends BasePresenter
 {
     /** @var ImageFacade @inject */
     public $imageFacade;
-
+    /** @var \App\Model\Facades\ContactFacade @inject */
+    public $contactFacade;
+    /** @var Translator */
+    public $translator;
     private ContactForm $contactForm;
 
-    public function __construct(ContactForm $contactForm)
+    public function __construct(ContactForm $contactForm, Translator $translator)
     {
         $this->contactForm = $contactForm;
+        $this->translator = $translator;
+    }
+
+    /**
+     * Creates the contact form component for about page
+     * @return ContactForm
+     */
+    protected function createComponentContactForm(): ContactForm
+    {
+        $contactForm = new ContactForm($this->contactFacade, $this->translator);
+
+        return $contactForm;
+    }
+
+    /**
+     * Creates the navbar component for all pages
+     * @return Navbar
+     */
+    protected function createComponentNavbar(): Navbar
+    {
+        return new Navbar($this->translator, $this->template->locale);
     }
 
     /**
@@ -27,6 +53,7 @@ final class HomePresenter extends Nette\Application\UI\Presenter
      */
     public function renderDefault(): void
     {
+  
         $categories = $this->imageFacade->getImageCategories();
 
         $latestImages = [];
@@ -41,19 +68,5 @@ final class HomePresenter extends Nette\Application\UI\Presenter
 
         $this->template->categories = $categories;
         $this->template->latestImages = $latestImages;
-    }
-
-    /** @var \App\Model\Facades\ContactFacade @inject */
-    public $contactFacade;
-
-    /**
-     * Creates the contact form component for about page
-     * @return 
-     */
-    protected function createComponentContactForm(): ContactForm
-    {
-        $contactForm = new ContactForm($this->contactFacade);
-
-        return $contactForm;
     }
 }

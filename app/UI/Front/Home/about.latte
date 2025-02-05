@@ -1,12 +1,12 @@
-{block title}About{/block} 
+{block title}{_about.title}{/block} 
 
 {block content}
 
 <!-- Header section -->
 <header class="py-5 gallery-page-head" style="background-color: black">
-  <div class="container px-4 px-lg-5 my-5 gallery-container">
+  <div class="container px-4 px-lg-5 gallery-container">
     <div class="text-left text-white">
-      <h1 class="display-4 fw-bolder">About me</h1>
+      <h1 class="display-4 fw-bolder">{_about.title_page}</h1>
     </div>
   </div>
 </header>
@@ -44,22 +44,18 @@
             <div class="px-3 contact-text">
             
               <h2 class="content-title text-start">
-                Photographer and fullstack developer
+                {_about.content_title}
               </h2>
               <p class="lead"><b>
-                My name is Adéla Adámková. This page combines my presentation as
-                a photographer and as a web developer.
+                {_about.about_me}
               </b></p>
               <p class="mb-3">
-                <span style="text-decoration: underline var(--site-color-02)">Photography:</span>
-                My love for photography started years ago when I got my first
-                Canon camera. Currently I'm using Canon EOS 5D Mark IV. I often
-                capture landscapes but I'm the most passionate about macro
-                photography.
+                <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_photo_title}</span>
+                {_about.about_me_photo_text}
               </p>
               <p class="">
-                <span style="text-decoration: underline var(--site-color-02)">Web developement:</span>
-                I'm junior fullstack developer. I use PHP and currently Nette as a framework. Which is also how was this page created.
+                <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_developer_title}</span>
+                {_about.about_me_developer_text}
               </p>
             </div>
           </div>
@@ -71,7 +67,7 @@
 
   <!-- Background image -->
 
-  <section id="contact" class="contact section" style="margin-bottom: 10rem;">
+  <section id="parallax-container" class="contact section parallax-window" data-parallax="scroll" data-image-src="{$basePath}/img/main-page/net.jpg">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
       </div><!-- End Section Title -->
@@ -80,8 +76,8 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 mt-1">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" style="display:flex; flex-direction: column; text-align: center">
-          <h2 style="font-size: 3rem; padding-top: 5rem;">Contact me</h2>
-          <span style="width: 80%; margin: 2rem auto;">Feel free to leave me a message and ask about anything!</span>
+          <h2 style="font-size: 3rem; padding-top: 5rem;">{_about.contact_form_title}</h2>
+          <span style="width: 80%; margin: 2rem auto;">{_about.contact_form_text}</span>
           </div>
 
           <div class="col-lg-6">
