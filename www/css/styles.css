@@ -9,6 +9,11 @@
   --site-color-02: rgb(222, 135, 72);
 }
 
+body a {
+  text-decoration: none;
+  color:black;
+}
+
 @media (max-width: 768px) {
 
   #mainNav {
@@ -30,7 +35,7 @@
 }
 
 #mainNav .nav-link:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--site-color-02);
 }
 
 #mainNav .nav-link:active {
@@ -72,7 +77,7 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/home-background.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -236,7 +241,7 @@
 }
 
 @media (max-width: 1024px) {
-  .footer-section, .gallery-page, .gallery-section {
+  .footer-section {
     padding: 5rem 0;
   }
 
@@ -357,9 +362,23 @@
 # Gallery Section
 --------------------------------------------------------------*/
 .gallery-page {
-  padding: 8rem 0;
+  padding: 3rem 0 8rem 0;
   width: 100%;
   margin: auto;
+}
+
+.gallery-container {
+  margin: 5rem 0;
+}
+
+@media (max-width: 1024px) {
+  .gallery-page {
+    padding: 3rem 0;
+  }
+
+  .gallery-container {
+    margin-top: 2.5rem;
+  }
 }
 
 .gallery-page .gallery-item {
@@ -428,30 +447,30 @@
 
 /* Make the page numbers circular and center the text */
 .pagination .page-item .circle-link {
-  border-radius: 50%;  
-  width: 40px;        
-  height: 40px;      
-  display: flex;       
-  align-items: center;   
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: 16px;  
-  padding: 0;    
-  text-align: center;   
+  font-size: 16px;
+  padding: 0;
+  text-align: center;
 }
 
 /* Make the arrows inherit background and have no border */
 .pagination .page-item .page-link {
-  background-color: inherit; 
-  border: none;              
-  color: inherit;            
-  display: flex;             
-  align-items: center;       
-  justify-content: center;   
-  width: 40px;               
-  height: 40px;             
-  border-radius: 50%;      
-  font-size: 18px;         
-  padding: 0;                
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  padding: 0;
 }
 
 /* Active page style (circle) */
@@ -465,14 +484,14 @@
   color: #6c757d;
   pointer-events: none;
   background-color: transparent;
-  border-color: transparent; 
+  border-color: transparent;
 }
 
 /* Disabled state for arrows (no background and no border) */
 .pagination .page-item.disabled .page-link span {
-  background-color: transparent; 
-  color: #6c757d; 
-  border: none;    
+  background-color: transparent;
+  color: #6c757d;
+  border: none;
 }
 
 /* Hover effect for arrows */
@@ -485,14 +504,14 @@
 .pagination .page-item .page-link span {
   display: inline-block;
   font-size: 18px;
-  background-color: inherit;  
-  color: inherit;            
-  border-radius: 50%;        
-  width: 40px;                
-  height: 40px;              
-  display: flex;             
-  align-items: center;       
-  justify-content: center;  
+  background-color: inherit;
+  color: inherit;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Spacing between the page items */
@@ -575,15 +594,16 @@
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
-#contact {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/net.jpg");
-  background-position: center;
+.contact {
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%) !important; */
+  /* background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  background-color: #1f1f1f;
+  background-color: #1f1f1f; */
   color: white;
   padding: 3rem 0;
+  margin-bottom: 10rem;
 }
 
 .contact .info-item {
@@ -620,7 +640,7 @@
   font-size: 14px;
 }
 
-.contact .php-email-form {
+.contact .contact-form {
   background-color: var(--surface-color);
   height: 100%;
   padding: 30px;
@@ -628,36 +648,36 @@
 }
 
 @media (max-width: 575px) {
-  .contact .php-email-form {
+  .contact .contact-form {
     padding: 20px;
   }
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
+.contact .contact-form input[type=text],
+.contact .contact-form input[type=email],
+.contact .contact-form textarea {
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 10px;
   color: var(--default-color);
   background-color: rgba(0, 0, 0, 0.5);;
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
+.contact .contact-form input[type=text]:focus,
+.contact .contact-form input[type=email]:focus,
+.contact .contact-form textarea:focus {
+  border-color: var(--site-color-01);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
+.contact .contact-form input[type=text]::placeholder,
+.contact .contact-form input[type=email]::placeholder,
+.contact .contact-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .contact-form button[type=submit] {
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
@@ -666,7 +686,7 @@
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .contact-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
@@ -687,10 +707,205 @@
   font-weight: 600;
 }
 
-.php-email-form .loading {
+/* .contact-form .loading {
   display: none;
   background: var(--surface-color);
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
+} */
+
+/* .loading {
+  display: none;
+} */
+
+/* .form-submitted .loading {
+  display: block;
+  animation: spin 1s linear infinite;
 }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+.parallax-window {
+  min-height: 500px;
+  position: relative;
+  background: transparent;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%);
+}
+
+.feature-item .feature-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--site-color-02), transparent 92%);
+}
+
+.feature-item .feature-icon i {
+  font-size: 24px;
+  color: var(--site-color-02);
+}
+
+.feature-item .feature-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.feature-item .feature-content p {
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+
+.portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 20px 10px 20px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-filters li:hover,
+.portfolio-filters .active {
+  background-color: var(--site-color-02);
+  color: #fff;
+}
+
+.portfolio-filters a:hover, .portfolio-filters .active a {
+  color: #fff;
+}
+
+.portfolio-filters li:first-child {
+  margin-left: 0;
+}
+
+.portfolio-filters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .portfolio-filters li {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin-left: 1rem;
+}
+
+ .dropdown-button .arrow {
+  margin-left: 8px;
+  border: solid #fff; /* Arrow color is set to white */
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+#mainNav.navbar-shrink .dropdown-button .arrow{
+  margin-left: 8px;
+  border: solid #000000; /* Arrow color is set to white */
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect to rotate the arrow */
+/* .dropdown-button:hover .arrow {
+  transform: rotate(-135deg);
+} */
+
+/* Arrow color and contrast improvements */
+.dropdown-button:hover .arrow {
+  border-color: #000; /* Change the arrow color on hover to black for better contrast */
+}
+
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  min-width: 160px;
+  z-index: 100;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-menu li a .flag {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Custom flag size for dropdown button */
+.dropdown-button .flag {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Ensure flags don't stretch when inside button */
+.dropdown-button img {
+  width: 20px;
+  height: auto;
+}
+
