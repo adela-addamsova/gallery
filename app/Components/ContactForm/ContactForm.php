@@ -3,77 +3,89 @@
 namespace App\Components\ContactForm;
 
 use App\Model\Facades\ContactFacade;
+use Contributte\Translation\Translator;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Utils\ArrayHash;
 
 class ContactForm extends Control
 {
-    /**
-     * @return Form
-     */
-
     private ContactFacade $facade;
+    /** @var Translator */
+    private $translator;
 
-    public function __construct(ContactFacade $facade)
+    public function __construct(ContactFacade $facade, Translator $translator)
     {
         $this->facade = $facade;
+        $this->translator = $translator;
     }
 
-    public function createComponentContactForm($callback): Form
+    public function createComponentContactForm(): Form
     {
         $form = new Form;
 
+        $form->addHidden('locale', $this->getParameter('locale'));
+
         $form->addText('name')
             ->setRequired('Please enter your name.')
-            ->setDefaultValue("Your Name");
+            ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.name"));
 
         $form->addText('subject')
             ->setRequired('Please enter your name.')
-            ->setDefaultValue("Subject");
+            ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.subject"));
 
         $form->addEmail('email')
             ->setRequired('Please enter your email.')
             ->addRule(Form::EMAIL, 'Please enter a valid email address.')
-            ->setDefaultValue("Your Email");
+            ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.email"));
 
         $form->addTextArea('message')
             ->setRequired('Please enter your message.')
             ->setAttribute('rows', 4)
-            ->setDefaultValue("Message")
+            ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.message"))
             ->setHtmlAttribute('class', "form-control");
 
-        $form->addSubmit('send', 'Send Message');
+        
+
+        $form->addSubmit('send', $this->translator->translate("contact_form.send"));
+
+        // $form->onSubmit[] = [$this, 'onFormSubmit'];
 
         $form->onSuccess[] = [$this, 'contactFormSucceeded'];
 
         return $form;
     }
 
+   
     /**
      * Handles form submission
      * @param Form $form
      * @param array $values
      */
-    public function contactFormSucceeded(ArrayHash $data): void
+    public function contactFormSucceeded(Form $form, ArrayHash $data): void
     {
-        $this->facade->sendMessage($data->email, $data->name, $data->message);
-        ob_start();
-        $this->template->setFile(__DIR__ . '/contactForm.latte');
-        $this->template->render();
-        $formHtml = ob_get_clean();
+        try {
+            $this->facade->sendMessage($data->email, $data->name, $data->message);
+            $this->template->message = $this->translator->translate("contact_form.success_message");
+        } catch (\Exception $e) {
+            $this->template->message = $this->translator->translate("contact_form.error_message");
+        }
 
-        // Send AJAX response with the updated form HTML and success message
-        $this->getPresenter()->payload->successMessage = 'Your message has been sent. Thank you!';
-        $this->getPresenter()->payload->formHtml = $formHtml;
-        $this->getPresenter()->sendPayload();
+        $locale = $data->locale ?: $this->getParameter('locale');
+        $this->getPresenter()->template->locale = $locale;
+
+        $this->getPresenter()->getSession()->set('locale', $locale);
+
+        $form->setValues([], true);
+
+        $this->redrawControl('contactFormSnippet');
     }
 
     /**
      * Render the ContactForm component
      */
     public function render(): void
-    {
+    {   
         $this->template->setFile(__DIR__ . '/contactForm.latte');
         $this->template->render();
     }
