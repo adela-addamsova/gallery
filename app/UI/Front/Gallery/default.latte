@@ -6,8 +6,8 @@
 <header class="py-5 gallery-page-head" style="background-color: black">
   <div class="container px-4 px-lg-5 gallery-container">
     <div class="text-left text-white">
-      <h1 class="display-4 fw-bolder">{='main.category_' . strtolower($category)|translate|capitalize}</h1>
-      <p class="lead fw-normal text-white-50 mb-0">Some rubbish to say.</p>
+      <h1 class="display-4 fw-bolder" data-aos="fade-up" data-aos-delay="200">{='main.category_' . strtolower($category)|translate|capitalize}</h1>
+      <p class="lead fw-normal text-white-50 mb-0" data-aos="fade-up" data-aos-delay="500">Some rubbish to say.</p>
 </div>
   </div>
 </header>
@@ -22,7 +22,7 @@
     <div class="row gy-4 justify-content-center ajax">
 
     <!-- Gallery nav -->
-   <ul class="portfolio-filters isotope-filters">
+   <ul class="category-filters isotope-filters" data-aos="zoom-in" data-aos-delay="100">
       {foreach $categories as $category_nav}
           <li style="cursor:pointer;" onclick="window.location.href='{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])|noescape}';"{if strtolower($activeCategory) == strtolower($category_nav->name)}class="active"{/if}>
           <a href="{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])}">{='main.category_' . strtolower($category_nav->name)|translate|capitalize}</a>

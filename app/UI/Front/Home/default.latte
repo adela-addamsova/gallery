@@ -12,8 +12,8 @@
   <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
     <div class="d-flex justify-content-center">
       <div class="text-center">
-        <h1 class="mx-auto my-0 text-uppercase main-h1">{_home.title}</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="line-height: 3rem">
+        <h1 class="mx-auto my-0 text-uppercase main-h1" data-aos="fade-up" data-aos-delay="200">{_home.title}</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="line-height: 3rem" data-aos="fade-up" data-aos-delay="500">
           {_home.description}
         </h2>
       </div>
@@ -27,7 +27,7 @@
   <div class="container px-4 px-lg-5">
     <!-- Gallery items -->
     {foreach $categories as $category}
-    <div class="container" data-aos="fade-up" data-aos-delay="50">
+    <div class="container" data-aos-delay="500" {if $iterator->even}data-aos="fade-right"{else}data-aos="fade-left"{/if}>
       <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
         <div class="col-lg-6">
           <img class="img-fluid lazyload" src="{$basePath}{$category->background_path}" alt="..." />
@@ -54,7 +54,7 @@
 
 <!-- Latest images slider -->
 <section class="slider-section bg-light" id="slider">
-  <div class="container px-4 px-lg-5 mb-5">
+  <div class="container px-4 px-lg-5 mb-5" data-aos="fade-up" data-aos-delay="50">
     <div class="row gx-4 gx-lg-5">
       <div class="col-md-10 col-lg-8 mx-auto text-center">
         <!-- Carousel wrapper -->
