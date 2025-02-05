@@ -48,3 +48,10 @@ body a {
   min-height: 500px;
   background: transparent;
 }
+
+.horizontal-line {
+  border-bottom: 1px solid white;
+  /* width: 50%; */
+  border-radius: 10px;
+  margin-top: 2rem;
+}
