@@ -2,11 +2,12 @@
 # Contact Section
 -----------------------------------------------------*/
 .contact {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    position: relative;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 500px; 
+    z-index: 1;
     color: white;
     padding: 3rem 0;
     margin-bottom: 10rem;

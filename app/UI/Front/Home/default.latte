@@ -3,17 +3,17 @@
 {block content}
 
 <!-- Preloader -->
-{* <div id="preloader">
+<div id="preloader">
   <div class="line"></div>
-</div> *}
+</div>
 
 <!-- Header section -->
-<header class="masthead parallax-window" id="parallax-container" data-parallax="scroll" data-image-src="{$basePath}/img/main-page/home-background.jpg">
+<header class="masthead jarallax bg-light" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 55%, #000 100%), url('{$basePath}/img/main-page/home-background.jpg');" >
   <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
     <div class="d-flex justify-content-center">
       <div class="text-center">
-        <h1 class="mx-auto my-0 text-uppercase main-h1" data-aos="fade-up" data-aos-delay="200">{_home.title}</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="line-height: 3rem" data-aos="fade-up" data-aos-delay="500">
+        <h1 class="mx-auto my-0 text-uppercase main-h1" data-aos="fade-up" data-aos-delay="1200">{_home.title}</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="line-height: 3rem" data-aos="fade-up" data-aos-delay="1400">
           {_home.description}
         </h2>
       </div>
@@ -27,7 +27,7 @@
   <div class="container px-4 px-lg-5">
     <!-- Gallery items -->
     {foreach $categories as $category}
-    <div class="container" data-aos-delay="500" {if $iterator->even}data-aos="fade-right"{else}data-aos="fade-left"{/if}>
+    <div class="container lazyload" {if $iterator->even}data-aos="fade-right"{else}data-aos="fade-left"{/if} data-aos-delay="300" data-aos-easing="ease">
       <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
         <div class="col-lg-6">
           <img class="img-fluid lazyload" src="{$basePath}{$category->background_path}" alt="..." />
