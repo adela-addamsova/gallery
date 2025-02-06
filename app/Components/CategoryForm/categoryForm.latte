@@ -1,0 +1,24 @@
+{form form class=>"bg-white rounded shadow-5-strong p-4"}
+<div class="form-outline mb-4">
+  <h2>{if $isEditMode}Edit category{else}Add category{/if}</h2>
+</div>
+
+<div class="form-outline mb-4" data-mdb-input-init>
+  {input name, class=>"form-control"} {label name, class =>
+  "form-label" /}
+</div>
+
+<div class="form-outline mb-4" data-mdb-input-init>
+  {input description, class=>"form-control"} {label description, class =>
+  "form-label" /}
+</div>
+
+<div class="form-outline mb-4" data-mdb-input-init>
+  {input background_path, class=>"form-control"} {label background_path, class => "form-label" /}
+</div>
+
+<div class="form-outline mb-4" data-mdb-input-init>
+  {input send, class=>"form-btn"}
+</div>
+
+{/form}

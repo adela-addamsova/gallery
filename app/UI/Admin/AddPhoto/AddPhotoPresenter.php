@@ -28,7 +28,7 @@ class AddPhotoPresenter extends BasePresenter
      * 
      * @return PhotoForm
      */
-    protected function createComponentPhotoForm()
+    protected function createComponentPhotoForm(): PhotoForm
     {
         $photoForm = $this->photoFormFactory->create();
 
@@ -36,7 +36,7 @@ class AddPhotoPresenter extends BasePresenter
 
         $photoForm->onSave[] = function (PhotoForm $photoForm, $data): void {
             $this->adminFacade->insertImage($data);
-            $this->flashMessage('Photo added successfully!', 'success');
+            $this->flashMessage('Photo was added successfully!', 'success');
         };
 
         return $photoForm;

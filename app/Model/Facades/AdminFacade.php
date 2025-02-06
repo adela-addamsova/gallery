@@ -126,7 +126,24 @@ class AdminFacade
      */
     public function showCategories(): Selection
     {
-        return $this->database->table('categories');
+        return $this->database->table('categories')->where('deleted_at', NULL);
+    }
+
+    /**
+     * Get a single category by its ID
+     * 
+     * @param mixed $id
+     * @return mixed
+     */
+    public function getCategory($id): Row|null
+    {
+        return $this->database->query(
+            '
+            SELECT *
+            FROM categories
+            WHERE id = ?',
+            $id
+        )->fetch();
     }
 
     /**
@@ -148,10 +165,10 @@ class AdminFacade
      * 
      * @param array $data
      */
-    public function updateCategory($data)
+    public function updateCategory($data, $id): void
     {
         try {
-            $this->database->table('images')->update($data);
+            $this->database->table('categories')->where('id', $id)->update($data);
         } catch (Exception $e) {
             throw new Exception('An error occurred: ' . $e->getMessage());
         }
@@ -166,7 +183,7 @@ class AdminFacade
     public function deleteCategory(int $id): bool
     {
         try {
-            $this->database->table('images')->where('id', $id)->update(['deleted_at' => new \DateTime()]);
+            $this->database->table('categories')->where('id', $id)->update(['deleted_at' => new \DateTime()]);
             return true;
         } catch (Exception $e) {
             throw new Exception('An error occurred during deletion: ' . $e->getMessage());
