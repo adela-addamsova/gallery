@@ -27,16 +27,23 @@
         <td>{$category->$key}</td>
         {/foreach}
         <td>
-          <i
-            class="fa-regular fa-pen-to-square"
-            style="width: 3rem; color: var(--site-color-01)"
-          ></i>
+          <a href="{plink EditCategory:, id=>$category->id}">
+             <i class="fa-regular fa-pen-to-square"
+                style="width: 3rem; color: var(--site-color-01)">
+             </i>
+          </a>
         </td>
         <td>
-          <i
-            class="fa-solid fa-trash-can"
-            style="width: 3rem; color: var(--site-color-02)"
-          ></i>
+          <a
+            href="{plink Admin:deleteCategory, $category->id}"
+            class="delete"
+            data-message="Are you sure you want to delete category {$category->name}?"
+            >
+              <i
+                class="fa-solid fa-trash-can"
+                style="width: 3rem; color: var(--site-color-02)"
+              ></i>
+          </a>
         </td>
       </tr>
       <!-- End table rows -->

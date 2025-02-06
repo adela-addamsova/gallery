@@ -19,6 +19,10 @@ final class RouterFactory
 
 		$router->addRoute('admin/editPhoto/<id>', 'Admin:EditPhoto:default');
 
+		$router->addRoute('admin/deleteCategory/<id>', 'Admin:Admin:deleteCategory');
+
+		$router->addRoute('admin/editCategory/<id>', 'Admin:EditCategory:default');
+
 		$router->addRoute('<locale>/gallery/<category>/<page>', ['module' => 'Front', 'presenter' => 'Gallery', 'action' => 'default', 'category' => 'default', 'page' => 1]);
 
 		$router->addRoute('admin/<page \d+>', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default']);

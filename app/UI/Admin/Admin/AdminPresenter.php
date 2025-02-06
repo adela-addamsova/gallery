@@ -67,6 +67,25 @@ class AdminPresenter extends BasePresenter {
     }
 
     /**
+     * Action to delete an image by its ID
+     *
+     * @param int $id
+     */
+    public function actionDeleteCategory(int $id): void
+    {
+        $this->adminFacade->deleteCategory($id);
+
+        if ($this->isAjax()) {
+            $this->sendJson([
+                'redirect' => $this->link('Admin:'),
+                'flashMessage' => "Category was deleted!"
+            ]);
+        } else {
+            $this->redirect('Admin:');
+        }
+    }
+
+    /**
      * Render method for the default action
      *
      * @param int $page
