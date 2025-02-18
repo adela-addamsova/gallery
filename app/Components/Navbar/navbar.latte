@@ -1,55 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container px-4 px-lg-5">
-   <a class="navbar-brand" href="#page-top">
-      <img
-        id="navImage"
-        class="lazyload nav-img"
-        data-src="{$basePath}/img/main-page/camera_icon.png"
-        style="width: 3rem; opacity: 0; transition: opacity 0.5s ease;"
-        loading="lazy"
-      />
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
+  <div class="container">
+    <a class="navbar-icon" href="#top">
+      <img id="navIcon" class="lazyload nav-img" data-src="{$basePath}/img/icons/fox-bnw.png" />
     </a>
-    <button
-      class="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarResponsive"
-      aria-controls="navbarResponsive"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <!-- Navbar items list -->
+      <!-- Navbar items -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="{$presenter->linkWithLocale('Home:default', ['locale' => $locale])}">{_main.home}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{$presenter->linkWithLocale('Home:default#gallery', ['locale' => $locale])}">{_main.gallery}</a>
+          <a class="nav-link" href="{$presenter->linkWithLocale('Gallery:macro', ['locale' => $locale])}" >{_main.gallery}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{$presenter->linkWithLocale('Home:about', ['locale' => $locale])}">{_main.about}</a>
         </li>
+        <!-- /Navbar items -->
 
         <!-- Language dropdown -->
         <li class="nav-item">
           <div class="language-dropdown">
             <button class="dropdown-button" onclick="toggleDropdown()">
-              <img src="{$basePath}/img/main-page/{$locale}-flag.png" alt="Current Language" class="flag">
+              <img src="{$basePath}/img/main-page/{$locale}-flag.png" alt="Current Language" class="flag" />
               <span class="arrow"></span>
             </button>
-            
+
             <ul class="dropdown-menu" id="language-dropdown">
-              <li><a href="{$presenter->linkWithLocale('this', ['locale' => 'en'])}"><img src="{$basePath}/img/main-page/en-flag.png" alt="English" class="flag"> English</a></li>
-              <li><a href="{$presenter->linkWithLocale('this', ['locale' => 'cs'])}"><img src="{$basePath}/img/main-page/cs-flag.png" alt="Čeština" class="flag"> Čeština</a></li>
+              <li>
+                <a href="{$presenter->linkWithLocale('this', ['locale' => 'en'])}">
+                  <img src="{$basePath}/img/main-page/en-flag.png" alt="English" class="flag" />English</a>
+              </li>
+              <li>
+                <a href="{$presenter->linkWithLocale('this', ['locale' => 'cs'])}">
+                  <img src="{$basePath}/img/main-page/cs-flag.png" alt="Čeština" class="flag" />Čeština</a>
+              </li>
             </ul>
           </div>
         </li>
-        <!-- End language dropdown -->  
+        <!-- /Language dropdown -->
       </ul>
-
     </div>
   </div>
-</nav> 
+</nav>

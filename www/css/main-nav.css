@@ -1,158 +1,138 @@
-#mainNav .nav-link {
-    transition: none;
-    padding: 2rem 1.5rem;
-    color: rgba(255, 255, 255);
-  }
-  
-  #mainNav .nav-link:hover {
-    color: var(--site-color-02);
-  }
-  
-  #mainNav .nav-link:active {
-    color: #fff;
-  }
-  
-  #mainNav.navbar-shrink {
-    background-color: #fff;
-  }
-  
-  #mainNav.navbar-shrink .navbar-brand {
-    opacity: 1;
-    transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1.75, 0.5, 1);
-  }
-  
-  #mainNav.navbar-shrink .nav-link {
-    color: #000;
-    padding: 1.5rem 1.5rem 1.25rem;
-    border-bottom: 0.25rem solid transparent;
-  }
-  
-  #mainNav.navbar-shrink .nav-link:hover {
-    color: var(--site-color-02);
-  }
-  
-  #mainNav.navbar-shrink .nav-link:active {
-    color: var(--site-color-02);
-  }
-  
-  #mainNav.navbar-shrink .nav-link.active {
-    color: var(--site-color-02);
-    outline: none;
-    border-bottom: 0.25rem solid var(--site-color-02);
-  }
-
-
-  /* Language dropdown */
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .language-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-button {
-    padding: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    margin-left: 1rem;
-  }
-  
-   .dropdown-button .arrow {
-    margin-left: 8px;
-    border: solid #fff; /* Arrow color is set to white */
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-  }
-  
-  #mainNav.navbar-shrink .dropdown-button .arrow{
-    margin-left: 8px;
-    border: solid #000000; /* Arrow color is set to white */
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-  }
-  
-  /* Hover effect to rotate the arrow */
-  /* .dropdown-button:hover .arrow {
-    transform: rotate(-135deg);
-  } */
-  
-  /* Arrow color and contrast improvements */
-  .dropdown-button:hover .arrow {
-    border-color: #000; /* Change the arrow color on hover to black for better contrast */
-  }
-  
-  
-  
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    min-width: 160px;
-    z-index: 100;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .dropdown-menu.show {
-    display: block;
-  }
-  
-  .dropdown-menu li a {
-    display: flex;
-    align-items: center;
-    padding: 8px 20px;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .dropdown-menu li a:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .dropdown-menu li a .flag {
-    width: 20px;
-    margin-right: 10px;
-  }
-  
-  /* Custom flag size for dropdown button */
-  .dropdown-button .flag {
-    width: 20px;
-    margin-right: 10px;
-  }
-  
-  /* Ensure flags don't stretch when inside button */
-  .dropdown-button img {
-    width: 20px;
-    height: auto;
-  }
-
-
-
-@media (max-width: 768px) {
-
-    #mainNav {
-        background-color: white;
-      }
-      #mainNav .nav-link {
-        color: black;
-      }
-
+/*--------------------------------------------------------------
+# Main navbar
+--------------------------------------------------------------*/
+#navbar .nav-link {
+  transition: none;
+  padding: 2rem 1.5rem;
+  color: rgba(255, 255, 255);
 }
 
+#navbar .navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar .navbar-icon .nav-img {
+  width: 3rem;
+  opacity: 0;
+  transition: opacity 0.5s ease
+}
+
+#navbar .nav-link:hover {
+  color: var(--site-color-02);
+}
+
+#navbar .nav-link:active {
+  color: #fff;
+}
+
+#navbar.nav-scroll {
+  background-color: #fff;
+}
+
+#navbar.nav-scroll .navbar-icon {
+  opacity: 1;
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1.75, 0.5, 1);
+}
+
+#navbar.nav-scroll .nav-link {
+  color: var(--default-color-b);
+  padding: 1rem 2rem;
+  border-bottom: 0.25rem solid transparent;
+}
+
+#navbar.nav-scroll .nav-link:hover {
+  color: var(--site-color-02);
+}
+
+@media (max-width: 768px) {
+  #navbar .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  #navbar .container {
+    max-width: 1300px;
+  }
+
+  #navbar .nav-link {
+    padding: 1.3rem 2rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Language dropdown
+--------------------------------------------------------------*/
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.language-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--default-color-w);
+  border: 1px solid #ccc;
+  min-width: 160px;
+  z-index: 100;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  left: -1rem;
+}
+
+.language-dropdown .dropdown-button {
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid var(--default-color-lg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin-left: 1rem;
+}
+
+.language-dropdown .dropdown-button .arrow {
+  margin-left: 8px;
+  border: solid var(--default-color-w);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+#navbar.nav-scroll .language-dropdown .dropdown-button .arrow {
+  border: solid var(--default-color-b);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown .dropdown-menu.show {
+  display: block;
+}
+
+.language-dropdown .dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  text-decoration: none;
+  color: var(--default-color-g);
+}
+
+.language-dropdown .dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+.language-dropdown .dropdown-button .flag, .dropdown-menu li a .flag {
+  width: 20px;
+  margin-right: 10px;
+  height: auto;
+}
