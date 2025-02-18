@@ -2,99 +2,58 @@
 
 {block content}
 
-<!-- Header section -->
-<header class="py-5 gallery-page-head" style="background-color: black">
-  <div class="container px-4 px-lg-5 gallery-container">
+<!-- Header -->
+<header class="py-5 about-page-head">
+  <div class="container px-4 px-lg-5">
     <div class="text-left text-white">
       <h1 class="display-4 fw-bolder">{_about.title_page}</h1>
-      <hr class="horizontal-line" data-aos="zoom-in" data-aos-delay="200">
     </div>
   </div>
 </header>
-<!-- End header -->
+<!-- /Header -->
 
-<div class="about-page">
-  <!-- About me -->
-  <section id="about-2" class="about-2 section mb-5">
-    <div class="container">
-      <div class="content">
-        <div class="row justify-content-center">
-          <div
-            class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-3" style="display: flex; align-items: center;"
-          >
-            <div
-              class="img-wrap text-center text-md-left"
-              data-aos="fade-left"
-              data-aos-delay="100"
-            >
-              <div class="img">
-                <img
-                  src="{$basePath}/img/main-page/yo1.jpg"
-                  alt="circle image"
-                  class="img-fluid"
-                />
-              </div>
-            </div>
+<!-- About me -->
+<section id="about" class="about section mb-5 mt-5">
+  <div class="container">
+    <div class="content">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-3 about-img">
+          <div class="text-center text-md-left" data-aos="fade-left" data-aos-delay="100">
+            <img src="{$basePath}/img/main-page/yo1.jpg" class="img-fluid" />
           </div>
-
-
-          <div
-            class="offset-md-0 offset-lg-1 col-sm-12 col-md-5 col-lg-5 col-xl-4" style= "margin: 0 1rem;"
-            data-aos="fade-right"
-          >
-            <div class="px-3 contact-text">
-            
-              <h2 class="content-title text-start">
-                {_about.content_title}
-              </h2>
-              <p class="lead"><b>
-                {_about.about_me}
-              </b></p>
-              <p class="mb-3">
-                <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_photo_title}</span>
-                {_about.about_me_photo_text}
-              </p>
-              <p class="">
-                <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_developer_title}</span>
-                {_about.about_me_developer_text}
-              </p>
-            </div>
+        </div>
+        <div class="offset-md-0 offset-lg-1 col-sm-12 col-md-5 col-lg-5 col-xl-4 about-text" data-aos="fade-right">
+          <div class="px-3">
+            <h2 class="about-title text-start">{_about.content_title}</h2>
+            <p class="text-head"><b> {_about.about_me} </b></p>
+            <p class="mb-3">
+              <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_photo_title}</span>
+              {_about.about_me_photo_text}
+            </p>
+            <p>
+              <span style="text-decoration: underline var(--site-color-02)">{_about.about_me_developer_title}</span>
+              {_about.about_me_developer_text}
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- End about me -->
+  </div>
+</section>
+<!-- /About me -->
 
-  <!-- Background image -->
-  <div class="jarallax contact" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 55%, #000 100%), url('{$basePath}/img/main-page/net.jpg');">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up" >
-      </div><!-- End Section Title -->
-
-    <!-- Contact form -->
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 mt-1">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" style="display:flex; flex-direction: column; text-align: center;">
-          <h2 style="font-size: 3rem; padding-top: 6rem;">{_about.contact_form_title}</h2>
-          <span style="width: 80%; margin: 2rem auto;">{_about.contact_form_text}</span>
-          </div>
-
-          <div class="col-lg-6">
-
-        {control contactForm}
-           
-          </div><!-- End Contact form -->
-          
-
-        </div>
+<!-- Contact form section -->
+<div class="jarallax contact" style=" background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 55%, #000 100%), url('{$basePath}/img/main-page/net.jpg');">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 mt-1">
+      <div class="col-lg-6 contact-text" data-aos="fade-up" data-aos-delay="300">
+        <h2>{_about.contact_form_title}</h2>
+        <span>{_about.contact_form_text}</span>
       </div>
-
-    </div><!-- End contact section -->
-
+      <div class="col-lg-6">{control contactForm}</div>
+    </div>
+  </div>
 </div>
-
-
+<!-- /Contact form section -->
 
 {/block}
-

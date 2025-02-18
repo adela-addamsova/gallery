@@ -1,64 +1,66 @@
-
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about-2 .content {
-    background-color: var(--surface-color);
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  
-  .about-2 .content-subtitle {
-    font-size: 15px;
-    margin-bottom: 10px;
-    display: block;
-    color: var(--default-color);
-  }
-  
-  .about-2 .content-title {
-    color: var(--heading-color);
-    font-size: 22px;
-    margin-bottom: 30px;
-  }
-  
-  .about-2 p {
-    line-height: 1.7;
-    color: var(--default-color);
-  }
-  
-  .about-2 .lead {
-    line-height: 1.6;
-    font-size: 18px;
-    font-weight: normal;
-    color: var(--default-color);
-  }
-  
-  .about-page {
-    margin: 4rem 0;
-  }
+.about-page-head {
+  background-color: black;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
-  
-/* .about {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 35rem;
-    padding: 15rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/main-page/yo.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+.about .content {
+  padding: 3rem 0;
+}
+
+.about .about-title {
+  font-size: 1.7rem;
+  margin-bottom: 30px;
+}
+
+.about .about-text {
+  margin: 0 1rem
+}
+
+.about .about-text .text-head {
+  line-height: 1.6;
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--default-color);
+}
+
+.about .about-text h2 {
+  line-height: 2.2rem
+}
+
+.about .about-text p {
+  line-height: 1.7;
+  color: var(--default-color);
+}
+
+.about .about-img {
+  display: flex;
+  align-items: center
+}
+
+.about .contact-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.contact-text h2 {
+  font-size: 3rem;
+  padding-top: 6rem;
+}
+
+.about .contact-text span {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+@media (max-width: 768px) {
+  .about-img img {
+    margin-bottom: 5rem;
   }
-  
-  @media (max-width: 768px) {
-  
-    .about {
-      background: black;
-      height: 30vh;
-      min-height: 0;
-      padding: 7rem 0 0 0;
-    }
-  
-    
-  } */
+}
