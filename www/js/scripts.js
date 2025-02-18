@@ -1,87 +1,157 @@
-/*!
-* Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-
-
 // Scripts
+
+// Initialize AOS, naja, and Fancybox
+AOS.init();
+naja.initialize();
+
+Fancybox.bind('[data-fancybox="gallery"]', {
+  Thumbs: {
+    autoStart: true,
+    type: "classic",
+  },
+  Image: {
+    thumb: function (instance, slide) {
+      return slide.$thumb ? slide.$thumb.attr("src") : null;
+    },
+    preload: false,
+  },
+  src: function (instance, slide) {
+    return slide.$thumb ? slide.$thumb.attr("data-src") : slide.src;
+  },
+});
+
+// Navbar
 window.addEventListener('DOMContentLoaded', event => {
-
-  // Navbar shrink function with delayed image appearance
   var navbarShrink = function () {
-      const navbarCollapsible = document.body.querySelector('#mainNav');
-      const navbarBrand = navbarCollapsible.querySelector('.navbar-brand');
-      const navImage = navbarBrand.querySelector('img'); // Get the image inside navbar-brand
-      if (!navbarCollapsible || !navbarBrand || !navImage) {
-          return;
-      }
+    const navbarCollapsible = document.body.querySelector('#mainNav');
+    const navbarBrand = navbarCollapsible.querySelector('.navbar-brand');
+    const navImage = navbarBrand.querySelector('img');
+    if (!navbarCollapsible || !navbarBrand || !navImage) {
+      return;
+    }
 
-      // If the page is at the top, hide the image
-      if (window.scrollY === 0) {
-          navbarCollapsible.classList.remove('navbar-shrink');
-          navImage.style.opacity = '0';  // Immediately hide image on top
-          navImage.style.transition = 'none'; // Disable transition for instant change
-      } else {
-          // When scrolling down, show the image
-          navbarCollapsible.classList.add('navbar-shrink');
-          navImage.style.transition = 'opacity 0.5s ease'; // Re-enable transition for smooth fade-in
-          navImage.style.opacity = '1';  // Show image on scroll
-      }
+    if (window.scrollY === 0) {
+      navbarCollapsible.classList.remove('navbar-shrink');
+      navImage.style.opacity = '0';
+      navImage.style.transition = 'none';
+    } else {
+      navbarCollapsible.classList.add('navbar-shrink');
+      navImage.style.transition = 'opacity 0.5s ease';
+      navImage.style.opacity = '1';
+    }
   };
 
-  // Shrink the navbar initially on page load
   navbarShrink();
 
-  // Shrink the navbar when the page is scrolled
   document.addEventListener('scroll', navbarShrink);
 
-  // Activate Bootstrap scrollspy on the main nav element
   const mainNav = document.body.querySelector('#mainNav');
   if (mainNav) {
-      new bootstrap.ScrollSpy(document.body, {
-          target: '#mainNav',
-          rootMargin: '0px 0px -40%',
-      });
+    new bootstrap.ScrollSpy(document.body, {
+      target: '#mainNav',
+      rootMargin: '0px 0px -40%',
+    });
   }
 
-  // Collapse responsive navbar when toggler is clicked
   const navbarToggler = document.body.querySelector('.navbar-toggler');
   const responsiveNavItems = [].slice.call(
-      document.querySelectorAll('#navbarResponsive .nav-link')
+    document.querySelectorAll('#navbarResponsive .nav-link')
   );
   responsiveNavItems.map(function (responsiveNavItem) {
-      responsiveNavItem.addEventListener('click', () => {
-          if (window.getComputedStyle(navbarToggler).display !== 'none') {
-              navbarToggler.click();  // Close the navbar after clicking a link
-          }
-      });
+    responsiveNavItem.addEventListener('click', () => {
+      if (window.getComputedStyle(navbarToggler).display !== 'none') {
+        navbarToggler.click();
+      }
+    });
   });
 
 });
 
-
-
-
- /**
-   * Preloader
-   */
- const preloader = document.querySelector('#preloader');
- if (preloader) {
-   window.addEventListener('load', () => {
-     setTimeout(() => {
-       preloader.classList.add('loaded');
-     }, 500);
-     setTimeout(() => {
-       preloader.remove();
-     }, 1500);
-   });
- }
-
-
- function toggleDropdown() {
-    document.getElementById('language-dropdown').classList.toggle('show');
+// Preloader
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.querySelector('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+      }, 2000);
+    });
   }
+});
 
+// Language dropdown
+function toggleDropdown() {
+  document.getElementById('language-dropdown').classList.toggle('show');
+}
 
+// Swiper
+document.addEventListener('DOMContentLoaded', function () {
+  const swiper = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 0,
+    breakpoints: {
+      // Window width >= 576px
+      576: {
+        slidesPerView: 1,
+        spaceBetween: 3
+      },
+      // Window width >= 768px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 5
+      },
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 50,
+      depth: 200,
+      modifier: 0.5,
+      slideShadows: false,
+      scale: 0.9
+    },
+  });
+});
+
+// Typewriter
+const text = document.getElementById('animatedText').getAttribute('data-text');
+const animatedText = document.getElementById('animatedText');
+
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    animatedText.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 60); // Adjust typing speed here
+  }
+}
+
+window.onload = typeWriter;
+
+// Jump to gallery images
+document.getElementById('animatedText').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  const target = document.getElementById('gallery-items');
+  const offset = 170;
+  const bodyRect = document.body.getBoundingClientRect().top;
+  const elementRect = target.getBoundingClientRect().top;
+  const elementPosition = elementRect - bodyRect;
+  const offsetPosition = elementPosition - offset;
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+});
