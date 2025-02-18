@@ -56,7 +56,6 @@ class ContactForm extends Control
         return $form;
     }
 
-   
     /**
      * Handles form submission
      * @param Form $form
@@ -71,10 +70,8 @@ class ContactForm extends Control
             $this->template->message = $this->translator->translate("contact_form.error_message");
         }
 
-        $locale = $data->locale ?: $this->getParameter('locale');
+        $locale = $this->getParameter('locale');
         $this->getPresenter()->template->locale = $locale;
-
-        $this->getPresenter()->getSession()->set('locale', $locale);
 
         $form->setValues([], true);
 

@@ -43,18 +43,31 @@
   align-items: center
 }
 
-.about .contact-text {
+.contact {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 500px;
+  z-index: 1;
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 10rem;
+}
+
+.contact .contact-text {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.contact-text h2 {
+.contact .contact-text h2 {
   font-size: 3rem;
-  padding-top: 6rem;
+  padding-top: 8rem;
+  text-align: center;
 }
 
-.about .contact-text span {
+.contact .contact-text span {
   width: 80%;
   margin: 2rem auto;
 }
@@ -62,5 +75,9 @@
 @media (max-width: 768px) {
   .about-img img {
     margin-bottom: 5rem;
+  }
+
+  .contact-text h2 {
+    padding: 1rem 0;
   }
 }
