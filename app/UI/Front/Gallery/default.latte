@@ -1,56 +1,63 @@
-{block title}{='main.category_' . strtolower($category)|translate|capitalize}{/block}
+{block title}{='main.category_' . strtolower($category)|translate|capitalize}{/block} 
 
 {block content}
 
-<!-- Header section -->
-<header class="py-5 gallery-page-head" style="background-color: black">
+<!-- Header -->
+<header class="py-5 gallery-page-head align-items-center">
   <div class="container px-4 px-lg-5 gallery-container">
     <div class="text-left text-white">
-      <h1 class="display-4 fw-bolder">{='main.category_' . strtolower($category)|translate|capitalize}</h1>
-      {* <p class="lead fw-normal text-white-50 mb-0" data-aos="fade-up" data-aos-delay="500">Some rubbish to say.</p> *}
-      <hr class="horizontal-line" data-aos="zoom-in" data-aos-delay="200">
-</div>
+      <h1 class="display-2 fw-bolder mb-5">
+        {='main.category_' . strtolower($category)|translate|capitalize}
+      </h1>
+      <p class="head-text fs-sm-6 fs-lg-5 text-white-50 mb-4" data-aos="fade-left" data-aos-delay="100">
+        The true beauty of macro photography lies in the ability to capture<br/>the smallest details that usually escape our notice.</p>
+      <a href="{$presenter->linkWithLocale('Gallery:default#gallery-items', ['category' => $category],['locale' => $locale])}" class="fs-5 text-white mt-3" id="animatedText" data-text="{='gallery.page_nav_' . strtolower($category)|translate}" data-aos="fade-right" data-aos-delay="500">
+        <i class="bi bi-arrow-down"></i>
+      </a>
+    </div>
   </div>
+  <img src="{$basePath}/img/icons/camera-lens (1).png" class="head-image" data-aos="zoom-out" data-aos-delay="250" />
 </header>
-<!-- End header -->
+<!-- /Header -->
 
-<!-- Snippet for dynamic content -->
+<!-- Dynamic content -->
 {snippet content}
 
-<!-- Gallery section -->
+<!-- Gallery -->
 <section id="gallery" class="gallery-page section bg-light ajax">
   <div class="container-fluid" data-aos="fade-up" data-aos-delay="100" style="width: 95%">
     <div class="row gy-4 justify-content-center ajax">
 
-    <!-- Gallery nav -->
-   <ul class="category-filters isotope-filters" data-aos="zoom-in" data-aos-delay="100">
-      {foreach $categories as $category_nav}
-          <li style="cursor:pointer;" onclick="window.location.href='{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])|noescape}';"{if strtolower($activeCategory) == strtolower($category_nav->name)}class="active"{/if}>
-          <a href="{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])}">{='main.category_' . strtolower($category_nav->name)|translate|capitalize}</a>
+      <!-- Gallery nav -->
+      <ul class="category" data-aos="zoom-in" data-aos-delay="100">
+        {foreach $categories as $category_nav} 
+          <li onclick="window.location.href='{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])|noescape}';"{if strtolower($activeCategory) == strtolower($category_nav->name)}class="active"{/if}>
+            <a href="{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category_nav->name])}">{='main.category_' . strtolower($category_nav->name)|translate|capitalize}</a>
           </li>
-      {/foreach}
-    </ul>
-    <!-- End gallery nav -->
-    
-      <!-- Gallery items -->
-      {foreach $images as $image}
-      <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
-       <div class="gallery-item h-100">
-          <a href="{$basePath}{$image->image_path}" title="{$image->description}" data-fancybox="gallery" data-caption="{$image->description}" data-thumb="{$basePath}{$image->image_thumb}">
-            <img src="{$basePath}{$image->image_thumb}" class="img-fluid" alt="" />
-          </a>
-        </div>
-      </div>
-      {/foreach}
-      <!-- End gallery items -->
+        {/foreach}
+      </ul>
+      <!-- /Gallery nav -->
 
+      <!-- Images -->
+      <div class="row gy-3 justify-content-center" id="gallery-items">
+        {foreach $images as $image}
+        <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
+          <div class="gallery-item h-100">
+            <a href="{$basePath}{$image->image_path}" title="{$image->description}" data-fancybox="gallery" data-caption="{$image->description}" data-thumb="{$basePath}{$image->image_thumb}">
+              <img src="{$basePath}{$image->image_thumb}" class="img-fluid" />
+            </a>
+          </div>
+        </div>
+        {/foreach}
+        <!-- /Images -->
+      </div>
       <!-- Paginator control -->
       {control myPaginator}
     </div>
   </div>
 </section>
-<!-- End gallery section -->
+<!-- /Gallery -->
 {/snippet}
-<!-- End snippet-->
+<!-- /Dynamic content-->
 
 {/block}
