@@ -1,48 +1,25 @@
-.footer-section {
-    padding: 7rem 0 5rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../img/main-page/macro-background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-  }
-  
-  
-  .social-media-section {
-    padding-top: 2rem;
-  }
-  
-  
-  .social-media-section .social {
-    margin-top: 2rem;
-  }
-  
-  .social-media-section .social a {
-    text-align: center;
-    height: 3rem;
-    width: 3rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 100%;
-    line-height: 3rem;
-    color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .social-media-section .social a:hover {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .social-media-section .social a:active {
-    color: #fff;
-  }
-  
-  .footer {
-    padding: 3rem 0;
-  }
-  
-  
-  
-  @media (max-width: 1024px) {
-    .footer-section {
-      padding: 5rem 0;
-    }
-  }
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.social-media-section {
+  padding-top: 4rem;
+}
+
+.social-media-section a {
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100%;
+  line-height: 3rem;
+  color: var(--default-color-lg);
+}
+
+.social-media-section a:hover {
+  color: var(--default-color-g);
+}
+
+.footer {
+  padding: 3rem 0;
+  color: var(--default-color-lg);
+}
