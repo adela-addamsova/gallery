@@ -1,6 +1,14 @@
 title: "Photo by Jackie"
-description: "Vítejte na první oficiální stránce, kde představuji svou fotografickou kolekci"
-latestImage: "Nejnovější obrázek v kategorii:"
+description: "Vítejte na první oficiální stránce, kde představuji svou fotografickou tvorbu"
+myWork: "Moje práce"
+myWorkDesc: "Prohlédněte si moje fotografie napříč nakolika kategoriemi."
+explore: "Prozkoumat více"
+exploreText: "Chcete se něco dozvědět o mé práci? Můžete si přečíst více nebo mě kontaktovat" 
+exploreLink: "zde"
+latestImages: "Nejnovější obrázky"
+latestImagesDesc: "Prohlédněte si poslední přídané obrázky v každé kategorii!"
+
+
 
 
 

@@ -1,6 +1,11 @@
 title: "Photo by Jackie"
 description: "Welcome to the first official webpage where I present my photography collection"
-latestImage: "Latest image in category:"
-
+myWork: "My work"
+myWorkDesc: "Explore my photography across different categories."
+explore: "Explore more"
+exploreText: "Do you want to know more about my work? You can read more or contact me "
+exploreLink: "here"
+latestImages: "Latest images"
+latestImagesDesc: "See the latest image added to the each category!"
 
 
