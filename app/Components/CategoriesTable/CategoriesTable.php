@@ -34,6 +34,7 @@ class CategoriesTable extends Control
             'id' => 'ID',
             'name' => 'Name',
             'background_path' => 'Background path',
+            'icon_path' => 'Icon path',
             'created_at' => 'Created at'
         ];
 

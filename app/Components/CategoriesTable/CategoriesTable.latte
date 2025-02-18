@@ -5,6 +5,7 @@
       <!-- Header row -->
       <tr>
         <th>Preview</th>
+        <th>Icon</th>
         {foreach $columns as $key => $column}
         <th>{$column}</th>
         {/foreach}
@@ -21,6 +22,12 @@
           <img
             src="{$basePath}/{$category->background_path}"
             style="width: 5rem"
+          />
+        </td>
+        <td>
+          <img
+            src="{$basePath}/{$category->icon_path}"
+            style="width: 3rem"
           />
         </td>
         {foreach $columns as $key => $header}
