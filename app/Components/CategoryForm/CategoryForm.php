@@ -51,6 +51,9 @@ class CategoryForm extends Control
         $form->addText('background_path', 'Background image path')
             ->setHtmlAttribute('placeholder', '/img/macro/img1.webp')
             ->setRequired();
+        $form->addText('icon_path', 'Icon path')
+            ->setHtmlAttribute('placeholder', '/img/icons/img1.webp')
+            ->setRequired();
 
         $form->addSubmit('send', $this->isEditMode ? 'Update' : 'Save');
 
@@ -59,6 +62,7 @@ class CategoryForm extends Control
                 'description' => $this->categoryData['description'],
                 'name' => $this->categoryData['name'],
                 'background_path' => $this->categoryData['background_path'],
+                'icon_path' => $this->categoryData['icon_path']
             ]);
         }
 

@@ -49,6 +49,7 @@ class EditCategoryPresenter extends BasePresenter
                     'description' => $updateData['description'],
                     'name' => $updateData['name'],
                     'background_path' => $updateData['background_path'],
+                    'icon_path' => $updateData['icon_path'],
                 ];
             $this->adminFacade->updateCategory($updateData, $id);
             $this->flashMessage('Category was updated successfully!', 'success');
