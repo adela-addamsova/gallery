@@ -10,7 +10,7 @@
         {='main.category_' . strtolower($category)|translate|capitalize}
       </h1>
       <p class="head-text fs-sm-6 fs-lg-5 text-white-50 mb-4" data-aos="fade-left" data-aos-delay="100">
-        The true beauty of macro photography lies in the ability to capture<br/>the smallest details that usually escape our notice.</p>
+        {='gallery.page_text_' . strtolower($category)|translate|noescape}</p>
       <a href="{$presenter->linkWithLocale('Gallery:default#gallery-items', ['category' => $category],['locale' => $locale])}" class="fs-5 text-white mt-3" id="animatedText" data-text="{='gallery.page_nav_' . strtolower($category)|translate}" data-aos="fade-right" data-aos-delay="500">
         <i class="bi bi-arrow-down"></i>
       </a>
