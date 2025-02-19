@@ -48,8 +48,14 @@ td a .pen-icon {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-@media (min-width: 992px) {
-    #intro {
-        margin-top: -58.59px;
-    }
+.form-btn {
+    background-color: var(--site-color-01);
+    border: var(--site-color-01);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    color: var(--default-color-w);
+}
+
+.form-btn:hover {
+    color: var(--default-color-b);
 }
