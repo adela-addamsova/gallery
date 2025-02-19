@@ -1,0 +1,25 @@
+/*--------------------------------------------------------------
+# Error
+--------------------------------------------------------------*/
+.error {
+    position: relative;
+    height: 100vh;
+}
+
+.error-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem 5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.error-text h1 {
+    font-size: 4rem; font-weight: bold;
+}
+
+.error-text p {
+    font-size: 1.5rem; margin-top: 1rem;
+}

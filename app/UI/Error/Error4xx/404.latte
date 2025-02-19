@@ -1,8 +1,11 @@
-{block content}
-<h1 n:block=title>Page Not Found</h1>
-
-<p>The page you requested could not be found. It is possible that the address is
-incorrect, or that the page no longer exists. Please use a search engine to find
-what you are looking for.</p>
-
-<p><small>error 404</small></p>
+{block title}404{/block}
+{block body}
+    <div class="error text-white text-center" style="background: url('{$basePath}/img/error/404.JPG') no-repeat center center fixed; background-size: cover;">
+        <div class="error-text">
+            <h1>404</h1>
+            <h1>Page not found</h1>
+            <p >There's nothing to see here.</p>
+            <p>Get out.</p>
+        </div>
+    </div>
+{/block}

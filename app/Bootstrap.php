@@ -6,13 +6,12 @@ namespace App;
 
 use Nette;
 use Nette\Bootstrap\Configurator;
-
+use Tracy\Debugger;
 
 class Bootstrap
 {
 	private Configurator $configurator;
 	private string $rootDir;
-
 
 	public function __construct()
 	{
@@ -21,7 +20,6 @@ class Bootstrap
 		$this->configurator->setTempDirectory($this->rootDir . '/temp');
 	}
 
-
 	public function bootWebApplication(): Nette\DI\Container
 	{
 		$this->initializeEnvironment();
@@ -29,9 +27,12 @@ class Bootstrap
 		return $this->configurator->createContainer();
 	}
 
-
 	public function initializeEnvironment(): void
 	{
+		// Disable tracy
+		// Debugger::enable(FALSE);
+		// $this->configurator->setDebugMode(FALSE);
+
 		//$this->configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
 		$this->configurator->enableTracy($this->rootDir . '/log');
 
@@ -39,7 +40,6 @@ class Bootstrap
 			->addDirectory(__DIR__)
 			->register();
 	}
-
 
 	private function setupContainer(): void
 	{
