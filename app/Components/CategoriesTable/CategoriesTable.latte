@@ -12,50 +12,35 @@
         <th>Update</th>
         <th>Delete</th>
       </tr>
-      <!-- End header row -->
+      <!-- /Header row -->
     </thead>
     <tbody>
       <!-- Table rows -->
       {foreach $categories as $category}
       <tr>
         <td>
-          <img
-            src="{$basePath}/{$category->background_path}"
-            style="width: 5rem"
-          />
+          <img src="{$basePath}/{$category->background_path}" class="category-background" />
         </td>
         <td>
-          <img
-            src="{$basePath}/{$category->icon_path}"
-            style="width: 3rem"
-          />
+          <img src="{$basePath}/{$category->icon_path}" class="category-icon" />
         </td>
         {foreach $columns as $key => $header}
         <td>{$category->$key}</td>
         {/foreach}
         <td>
           <a href="{plink EditCategory:, id=>$category->id}">
-             <i class="fa-regular fa-pen-to-square"
-                style="width: 3rem; color: var(--site-color-01)">
-             </i>
+             <i class="fa-regular fa-pen-to-square pen-icon"></i>
           </a>
         </td>
         <td>
-          <a
-            href="{plink Admin:deleteCategory, $category->id}"
-            class="delete"
-            data-message="Are you sure you want to delete category {$category->name}?"
-            >
-              <i
-                class="fa-solid fa-trash-can"
-                style="width: 3rem; color: var(--site-color-02)"
-              ></i>
+          <a href="{plink Admin:deleteCategory, $category->id}" class="delete" data-message="Are you sure you want to delete category {$category->name}?">
+              <i class="fa-solid fa-trash-can trash-icon"></i>
           </a>
         </td>
       </tr>
-      <!-- End table rows -->
+      <!-- /Table rows -->
       {/foreach}
     </tbody>
   </table>
-  <!-- End table -->
+  <!-- /Table -->
 </div>

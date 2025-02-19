@@ -50,7 +50,7 @@
   background-attachment: fixed;
   min-height: 500px;
   z-index: 1;
-  color: white;
+  color: var(--default-color-w);
   padding: 3rem 0;
   margin-bottom: 10rem;
 }
@@ -63,7 +63,7 @@
 
 .contact .contact-text h2 {
   font-size: 3rem;
-  padding-top: 8rem;
+  padding-top: 7rem;
   text-align: center;
 }
 

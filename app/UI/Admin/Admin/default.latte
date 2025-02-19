@@ -1,44 +1,26 @@
-<!-- Page title -->
-{block title}Admin{/block}
+{block title}Admin{/block} 
 
 {block content}
 
-<!-- Admin section -->
-<section
-  id="admin"
-  class="admin section bg-light"
-  style="width: 80%; margin: auto; padding: 3rem 0"
->
-  <!-- Container for content -->
-  <div
-    class="container-fluid"
-    data-aos="fade-up"
-    data-aos-delay="100"
-    style="width: 95%"
-  >
-    <!-- Container for flash messages -->
-    <div class="w-100" id="flash-container" style="margin-bottom: 4rem">
-      <div
-        class="alert alert-{$flash->type} mx-auto card-body text-center mb-3"
-        role="alert"
-        n:if="$flashes"
-        n:foreach="$flashes as $flash"
-      >
+<section id="admin" class="admin section bg-light container">
+  <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+    <!-- Flash messages -->
+    <div class="w-100 mb-4" id="flash-container">
+      <div class="alert alert-{$flash->type} mx-auto card-body text-center mb-3" role="alert" n:if="$flashes" n:foreach="$flashes as $flash">
         {$flash->message}
       </div>
     </div>
-    <!-- End container for flash messages -->
+    <!-- /Flash messages -->
 
     <!-- Categories table -->
     <div class="row gy-4 justify-content-center mb-5">
       <h1>Categories</h1>
       {control categoriesTable}
     </div>
-    <!-- End categories table -->
+    <!-- /Categories table -->
 
-    <!-- Snippet for dynamic content -->
     {snippet content}
-    
+
     <!-- Images table -->
     <div class="table-responsive">
       <h1>Images</h1>
@@ -53,54 +35,41 @@
             <th>Update</th>
             <th>Delete</th>
           </tr>
-          <!-- End header row -->
+          <!-- /Header row -->
         </thead>
         <tbody>
           <!-- Table rows -->
           {foreach $images as $image}
           <tr>
             <td>
-              <img src="{$basePath}/{$image->thumb_path}" style="width: 5rem" />
+              <img src="{$basePath}/{$image->thumb_path}" class="image-thumb" />
             </td>
             {foreach $columns as $key => $header}
             <td>{$image->$key}</td>
             {/foreach}
             <td>
-              <a href="{link EditPhoto:, id=>$image->id}"
-                ><i
-                  class="fa-regular fa-pen-to-square"
-                  style="width: 3rem; color: var(--site-color-01)"
-                ></i
-              ></a>
+              <a href="{link EditPhoto:, id=>$image->id}">
+                <i class="fa-regular fa-pen-to-square pen-icon"></i>
+              </a>
             </td>
             <td>
-              <a
-                href="{link Admin:deleteImage, $image->id}"
-                class="delete"
-                data-message="Are you sure you want to delete image {$image->id}?"
-              >
-                <i
-                  class="fa-solid fa-trash-can"
-                  style="width: 3rem; color: var(--site-color-02)"
-                ></i>
+              <a href="{link Admin:deleteImage, $image->id}" class="delete" data-message="Are you sure you want to delete image {$image->id}?">
+                <i class="fa-solid fa-trash-can trash-icon"></i>
               </a>
             </td>
           </tr>
-          <!-- End table rows -->
+          <!-- /Table rows -->
           {/foreach}
         </tbody>
       </table>
 
-      <!-- Include paginator control -->
+      <!-- Paginator -->
       {control myPaginator}
     </div>
-    <!-- End images table -->
+    <!-- /Images table -->
 
     {/snippet}
-    <!-- End snippet -->
   </div>
-  <!-- End container -->
 </section>
-<!-- End admin section -->
 
 {/block}

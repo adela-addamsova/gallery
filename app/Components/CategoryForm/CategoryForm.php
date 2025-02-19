@@ -28,7 +28,7 @@ class CategoryForm extends Control
      * @param bool $isEditMode - Indicates if edit mode is set
      */
 
-     public function setEditMode(bool $isEditMode, $categoryData = null): void
+    public function setEditMode(bool $isEditMode, $categoryData = null): void
     {
         $this->isEditMode = $isEditMode;
         $this->categoryData = $categoryData;

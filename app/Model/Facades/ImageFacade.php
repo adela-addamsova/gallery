@@ -29,8 +29,8 @@ class ImageFacade
      */
     public function getImageCategories(): Selection
     {
-        return $this->database->table('categories')
-            ->order('id');
+        return $this->database->table('categories')->where('deleted_at', NULL)
+        ->order('id');
     }
 
     /**

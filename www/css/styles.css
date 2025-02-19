@@ -39,24 +39,6 @@ a {
   font-family: var(--default-font);
 }
 
-.table th,
-.table td {
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* Form */
-#intro {
-  width: 100%;
-  height: 100vh;
-}
-
-@media (min-width: 992px) {
-  #intro {
-    margin-top: -58.59px;
-  }
-}
-
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
