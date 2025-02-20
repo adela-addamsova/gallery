@@ -18,7 +18,6 @@ final class HomePresenter extends BasePresenter
     public $contactFacade;
     /** @var Translator */
     public $translator;
-    private ContactForm $contactForm;
 
     public function __construct(ContactForm $contactForm, Translator $translator)
     {
@@ -27,18 +26,7 @@ final class HomePresenter extends BasePresenter
     }
 
     /**
-     * Creates the contact form component for about page
-     * @return ContactForm
-     */
-    protected function createComponentContactForm(): ContactForm
-    {
-        $contactForm = new ContactForm($this->contactFacade, $this->translator);
-
-        return $contactForm;
-    }
-
-    /**
-     * Creates the navbar component for all pages
+     * Creates the navbar component
      * @return Navbar
      */
     protected function createComponentNavbar(): Navbar
@@ -53,7 +41,7 @@ final class HomePresenter extends BasePresenter
      */
     public function renderDefault(): void
     {
-  
+
         $categories = $this->imageFacade->getImageCategories();
 
         $latestImages = [];

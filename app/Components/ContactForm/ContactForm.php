@@ -24,8 +24,6 @@ class ContactForm extends Control
     {
         $form = new Form;
 
-        $form->addHidden('locale', $this->getParameter('locale'));
-
         $form->addText('name')
             ->setRequired('Please enter your name.')
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.name"));
@@ -45,11 +43,15 @@ class ContactForm extends Control
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.message"))
             ->setHtmlAttribute('class', "form-control");
 
-        
+        $locale = $this->getPresenter()->getParameter('locale');
+
+        if ($locale === 'cs') {
+            $form->setAction($this->getPresenter()->link('About:about', ['locale' => 'cs']));
+        } else {
+            $form->setAction($this->getPresenter()->link('About:about', ['locale' => 'en']));
+        }
 
         $form->addSubmit('send', $this->translator->translate("contact_form.send"));
-
-        // $form->onSubmit[] = [$this, 'onFormSubmit'];
 
         $form->onSuccess[] = [$this, 'contactFormSucceeded'];
 
@@ -65,15 +67,13 @@ class ContactForm extends Control
     {
         try {
             $this->facade->sendMessage($data->email, $data->name, $data->message);
+
             $this->template->message = $this->translator->translate("contact_form.success_message");
+
+            $form->setValues([], true);
         } catch (\Exception $e) {
             $this->template->message = $this->translator->translate("contact_form.error_message");
         }
-
-        $locale = $this->getParameter('locale');
-        $this->getPresenter()->template->locale = $locale;
-
-        $form->setValues([], true);
 
         $this->redrawControl('contactFormSnippet');
     }
@@ -82,7 +82,7 @@ class ContactForm extends Control
      * Render the ContactForm component
      */
     public function render(): void
-    {   
+    {
         $this->template->setFile(__DIR__ . '/contactForm.latte');
         $this->template->render();
     }

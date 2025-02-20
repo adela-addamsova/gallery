@@ -27,7 +27,7 @@ final class RouterFactory
 
 		$router->addRoute('admin/<page \d+>', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default']);
 
-		$router->addRoute('<locale>/about', ['module' => 'Front', 'presenter' => 'Home', 'action' => 'about']);
+		$router->addRoute('<locale>/about', ['module' => 'Front', 'presenter' => 'About', 'action' => 'about']);
 
 		$router->addRoute('admin/<presenter>/<action>[</id>]', ['module' => 'Admin', 'presenter' => 'Admin', 'action' => 'default', 'id' => null]);
 		
