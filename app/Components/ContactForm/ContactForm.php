@@ -25,20 +25,20 @@ class ContactForm extends Control
         $form = new Form;
 
         $form->addText('name')
-            ->setRequired('Please enter your name.')
+            ->setRequired($this->translator->translate("contact_form.required_name"))
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.name"));
 
         $form->addText('subject')
-            ->setRequired('Please enter your name.')
+            ->setRequired($this->translator->translate("contact_form.required_subject"))
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.subject"));
 
         $form->addEmail('email')
-            ->setRequired('Please enter your email.')
-            ->addRule(Form::EMAIL, 'Please enter a valid email address.')
+            ->setRequired($this->translator->translate("contact_form.required_email"))
+            ->addRule(Form::EMAIL, $this->translator->translate("contact_form.valid_email"))
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.email"));
 
         $form->addTextArea('message')
-            ->setRequired('Please enter your message.')
+            ->setRequired($this->translator->translate("contact_form.required_message"))
             ->setAttribute('rows', 4)
             ->setHtmlAttribute('placeholder', $this->translator->translate("contact_form.message"))
             ->setHtmlAttribute('class', "form-control");
