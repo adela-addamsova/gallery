@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\UI\Front\Home;
 
 use App\Front\BasePresenter;
-use App\Components\ContactForm\ContactForm;
 use App\Components\Navbar;
 use App\Model\Facades\ImageFacade;
 use Contributte\Translation\Translator;
@@ -14,14 +13,11 @@ final class HomePresenter extends BasePresenter
 {
     /** @var ImageFacade @inject */
     public $imageFacade;
-    /** @var \App\Model\Facades\ContactFacade @inject */
-    public $contactFacade;
     /** @var Translator */
     public $translator;
 
-    public function __construct(ContactForm $contactForm, Translator $translator)
+    public function __construct(Translator $translator)
     {
-        $this->contactForm = $contactForm;
         $this->translator = $translator;
     }
 
