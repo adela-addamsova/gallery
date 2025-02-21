@@ -94,7 +94,7 @@
     <div class="swiper-wrapper">
       {foreach $latestImages as $image}
       <div class="swiper-slide">
-        <img class="swiper-lazy" src="{$basePath}{$image->image_thumb}" alt="" />
+        <img class="swiper-lazy" src="{$basePath}/{$image->image_thumb}" alt="" />
         <h5>{='main.category_' . strtolower($image->category_name)|translate}</h5>
       </div>
       {/foreach}

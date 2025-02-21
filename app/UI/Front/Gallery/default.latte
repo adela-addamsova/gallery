@@ -43,8 +43,8 @@
         {foreach $images as $image}
         <div class="col-xl-4 col-lg-4 col-md-6 col-xl-1">
           <div class="gallery-item h-100">
-            <a href="{$basePath}{$image->image_path}" title="{$image->description}" data-fancybox="gallery" data-caption="{$image->description}" data-thumb="{$basePath}{$image->image_thumb}">
-              <img src="{$basePath}{$image->image_thumb}" class="img-fluid" />
+            <a href="{$basePath}/{$image->image_path}" title="{$image->description}" data-fancybox="gallery" data-caption="{$image->description}" data-thumb="{$basePath}/{$image->image_thumb}">
+              <img src="{$basePath}/{$image->image_thumb}" class="img-fluid" />
             </a>
           </div>
         </div>
