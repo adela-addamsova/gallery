@@ -48,7 +48,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 500px;
+  min-height: fit-content;
   z-index: 1;
   color: var(--default-color-w);
   padding: 3rem 0;
