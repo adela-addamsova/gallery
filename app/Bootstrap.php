@@ -29,11 +29,15 @@ class Bootstrap
 
 	public function initializeEnvironment(): void
 	{
-		// Disable tracy
+		// Disable debug mode
 		// Debugger::enable(FALSE);
 		// $this->configurator->setDebugMode(FALSE);
 
-		//$this->configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
+		// $this->configurator->createRobotLoader()
+		//     ->addDirectory(__DIR__)
+		//     ->register();
+
+		// $this->configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
 		$this->configurator->enableTracy($this->rootDir . '/log');
 
 		$this->configurator->createRobotLoader()
