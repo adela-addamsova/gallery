@@ -6,6 +6,8 @@ use App\Model\Facades\ContactFacade;
 use Contributte\Translation\Translator;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Http\Request;
+use Nette\Http\Session;
 use Nette\Utils\ArrayHash;
 
 class ContactForm extends Control
@@ -13,11 +15,15 @@ class ContactForm extends Control
     private ContactFacade $facade;
     /** @var Translator */
     private $translator;
+    private Request $httpRequest;
+    private Session $session;
 
-    public function __construct(ContactFacade $facade, Translator $translator)
+    public function __construct(ContactFacade $facade, Translator $translator, Request $httpRequest, Session $session)
     {
         $this->facade = $facade;
         $this->translator = $translator;
+        $this->httpRequest = $httpRequest;
+        $this->session = $session;
     }
 
     public function createComponentContactForm(): Form
@@ -63,13 +69,36 @@ class ContactForm extends Control
      * @param Form $form
      * @param array $values
      */
+
+    private const MAX_MESSAGES_PER_IP = 3;
     public function contactFormSucceeded(Form $form, ArrayHash $data): void
     {
+        $ipAddress = $this->getPresenter()->getHttpRequest()->getRemoteAddress();
+        $sessionSection = $this->getPresenter()->session->getSection('contactForm');
+
+        $currentTimestamp = time();
+        $oneWeekAgo = strtotime('-1 week', $currentTimestamp);
+
+        $messageData = $sessionSection[$ipAddress] ?? ['count' => 0, 'timestamp' => $currentTimestamp];
+
+        if ($messageData['timestamp'] < $oneWeekAgo) {
+            $messageData['count'] = 0;
+            $messageData['timestamp'] = $currentTimestamp;
+        }
+
+        if ($messageData['count'] >= self::MAX_MESSAGES_PER_IP) {
+            $this->template->message = $this->translator->translate("contact_form.error_limit_message");
+            $this->redrawControl('contactFormSnippet');
+            return;
+        }
+
         try {
             $this->facade->sendMessage($data->email, $data->name, $data->message);
 
             $this->template->message = $this->translator->translate("contact_form.success_message");
-
+            $messageData['count'] += 1;
+            $messageData['timestamp'] = $currentTimestamp;
+            $sessionSection[$ipAddress] = $messageData;
             $form->setValues([], true);
         } catch (\Exception $e) {
             $this->template->message = $this->translator->translate("contact_form.error_message");

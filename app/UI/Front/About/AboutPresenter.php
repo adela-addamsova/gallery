@@ -29,7 +29,7 @@ final class AboutPresenter extends BasePresenter
      */
     protected function createComponentContactForm(): ContactForm
     {
-        $contactForm = new ContactForm($this->contactFacade, $this->translator);
+        $contactForm = new ContactForm($this->contactFacade, $this->translator, $this->getHttpRequest(), $this->getSession());
 
         return $contactForm;
     }
