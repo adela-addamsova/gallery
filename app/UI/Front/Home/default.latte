@@ -3,20 +3,7 @@
 {block content}
 
 <!-- Preloader -->
-{*
-<div id="preloader">
-  <div class="middle">
-    <div class="bar bar1"></div>
-    <div class="bar bar2"></div>
-    <div class="bar bar3"></div>
-    <div class="bar bar4"></div>
-    <div class="bar bar5"></div>
-    <div class="bar bar6"></div>
-    <div class="bar bar7"></div>
-    <div class="bar bar8"></div>
-  </div>
-</div>
-*}
+
 <!-- /Preloader -->
 
 <!-- Header section -->
@@ -43,18 +30,18 @@
       <h2 class="mb-3">{_home.myWork}</h2>
       <p>{_home.myWorkDesc}</p>
     </div>
-    <div class="row gy-4 justify-content-center lazyload">
+    <div class="row gy-4 justify-content-center">
 
       {foreach $categories as $category}
-      <div class="col-lg-4 lazyload" data-aos="zoom-in" data-aos-delay="200">
+      <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="50">
         <div class="gallery-menu-item position-relative" style="cursor:pointer;" 
             onclick="window.location.href='{$presenter->linkWithLocale('Gallery:default', ['locale' => $locale, 'category' => $category->name])|noescape}';">
           <div class="background position-relative">
-            <img src="{$basePath}{$category->background_path}" class="lazyload" />
+            <img data-src="{$basePath}{$category->background_path}" class="lazyload" alt="Category Background" loading="lazy" />
           </div>
           <div class="description">
               <div class="overlay-icon"></div>
-              <img src="{$basePath}{$category->icon_path}" class="small-icon" alt="Small Icon" />
+              <img data-src="{$basePath}{$category->icon_path}" class="small-icon lazyload" alt="Small Icon" />
               <h5>{='main.category_' . strtolower($category->name)|translate}</h5>
           </div>
         </div>
