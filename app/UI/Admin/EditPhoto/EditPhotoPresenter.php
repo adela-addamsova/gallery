@@ -41,17 +41,8 @@ class EditPhotoPresenter extends BasePresenter
             $photoForm->setEditMode(false);
         }
 
-        $photoForm->onSave[] = function (PhotoForm $photoForm, $updateData) {
-            $id = $this->getParameter('id');
-            $updateData =
-                [
-                    'id' => $id,
-                    'description' => $updateData['description'],
-                    'category_id' => $updateData['category_id'],
-                    'path' => $updateData['path'],
-                    'thumb_path' => $updateData['thumb_path'],
-                ];
-            $this->adminFacade->updateImage($updateData, $id);
+        $photoForm->onSave[] = function () {
+
             $this->flashMessage('Photo updated successfully!', 'success');
         };
 

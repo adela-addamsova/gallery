@@ -3,19 +3,21 @@
   <h2>{if $isEditMode}Edit photo{else}Add photo{/if}</h2>
 </div>
 
-<div class="form-outline mb-4" data-mdb-input-init>
+<div class="form-outline mb-4">
   {input description, class=>"form-control"} {label description, class => "form-label" /}
 </div>
 
-<div class="form-outline mb-4" data-mdb-input-init>
+<div class="form-outline mb-4">
   {input category_id, class=>"form-control"} {label category_id, class => "form-label" /}
 </div>
 
-<div class="form-outline mb-4" data-mdb-input-init>
+{if !$isEditMode}
+<div class="form-outline mb-4">
   {input image, class=>"form-control"} {label image, class => "form-label" /}
 </div>
+{/if}
 
-<div class="form-outline mb-4" data-mdb-input-init>
+<div class="form-outline mb-4">
   {input send, class=>"form-btn"}
 </div>
 {/form}
