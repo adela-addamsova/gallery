@@ -4,7 +4,7 @@ services:
 	- App\Components\CategoriesTable\CategoriesTable
 	- App\Components\Paginator\MyPaginator
 	- App\Components\ContactForm\ContactForm
-	- Contributte\Translation\LocalesResolvers\Session
+	- App\Components\PhotoForm\PhotoForm
 		
 search:
 	-	in: %appDir%
